@@ -9,3 +9,6 @@ forge test
 结果:
 Encountered a total of 6 failing tests, 8 tests succeeded
 
+
+为了解决vscode的报错，新增remappings.txt
+
