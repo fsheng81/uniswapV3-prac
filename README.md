@@ -88,3 +88,15 @@ cast call 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 "slot0()"| xargs cast --abi
 
 5602277097478614198912276234240
 85176
+
+UI相关设置：
+设置app.js中的合约地址
+npm install -g yarn
+
+执行 `cd ui & yarn & yarn start`
+先执行yarn来检查packages
+自动跳转 http://localhost:3000/
+参考：https://github.com/facebook/create-react-app
+
+问题：为什么会一闪而过？
+需要安装metamask插件？add in firefox
