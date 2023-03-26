@@ -6,6 +6,20 @@ import "./ERC20Mintable.sol";
 import "../src/UniswapV3Manager.sol";
 import "./TestUtils.sol";
 
+/**
+setUp() // 整个用例执行前
+setupTestCase() internal // 每一个单独的用例采用 单独的pool实例 执行Mint()
+测试用例包括：
+
+testMintSuccess()
+testMintInvalidTickRangeLower() // 注入流动性的tick超出上下限
+testMintInvalidTickRangeUpper()
+testMintZeroLiquidity() // 输入的流动性为0
+
+testSwapBuyEth()
+testSwapInsufficientInputAmount() // 需要的input数量超出了用户持有量
+
+ */
 contract UniswapV3ManagerTest is Test, TestUtils {
     ERC20Mintable token0;
     ERC20Mintable token1;
@@ -255,6 +269,7 @@ contract UniswapV3ManagerTest is Test, TestUtils {
             address(this)
         );
 
+        // todo: arithmeticError
         vm.expectRevert(stdError.arithmeticError);
         manager.swap(address(pool), extra);
     }

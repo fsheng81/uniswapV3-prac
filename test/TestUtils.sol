@@ -3,6 +3,8 @@ pragma solidity ^0.8.0;
 
 import "../src/UniswapV3Pool.sol";
 
+// abstract contract 会被 继承 后才能够被部署
+
 abstract contract TestUtils {
     function encodeError(string memory error)
         internal
