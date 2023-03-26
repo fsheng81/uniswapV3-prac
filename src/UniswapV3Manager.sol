@@ -4,6 +4,8 @@ pragma solidity ^0.8.0;
 import "../src/UniswapV3Pool.sol";
 import "../src/interfaces/IERC20.sol";
 
+// 实现四个函数 mint() swap() mintCallback() swapCallback()
+
 contract UniswapV3Manager {
     function mint(
         address poolAddress_,
@@ -39,6 +41,9 @@ contract UniswapV3Manager {
             (UniswapV3Pool.CallbackData)
         );
 
+        // 讲token 从 extra.payer账户 转移到 msg.sender账户
+        // pay是data中记录的地址，由外部提供
+        // msg.sender 是 pool 地址
         IERC20(extra.token0).transferFrom(extra.payer, msg.sender, amount0);
         IERC20(extra.token1).transferFrom(extra.payer, msg.sender, amount1);
     }
@@ -52,7 +57,7 @@ contract UniswapV3Manager {
             data,
             (UniswapV3Pool.CallbackData)
         );
-
+        // amount > 0 : 由外部向pool转账
         if (amount0 > 0) {
             IERC20(extra.token0).transferFrom(
                 extra.payer,

@@ -1,5 +1,22 @@
 uniswapV3-prac to understand the framework of uniswapV3.
 
+dev1 仅包括最基础的实现，单用户的mint()，不跨tick的swap()，不涉及solidity复杂的计算，也不涉及手续费的收取。以token0 = WETH, token1 = USDC为例，事先用Python实现计算功能，了解基本框架。
+
+结构为：
+
+```bash
+|- scripts # 部署
+|- src # 源码
+	|- interface
+	|- lib # 为了保证 pool 合约的长度，把其他功能用 library 形式实现
+	|- pool.sol # 交易池子的核心功能
+	|- manager.sol # 用户通过manager调用pool中的函数。
+|- test # 单元测试用例
+|- ui # React实现的UI界面
+```
+
+
+
 ## 部署
 
 ``` bash
@@ -16,6 +33,9 @@ forge script scripts/DeployDevelopment.s.sol --broadcast --fork-url http://local
 
 # 部署(参考)
 forge create <filePath>:<ContractName> --private-key=$PRIV_KEY
+
+# 交易
+
 ```
 为了解决vscode的报错，新增remappings.txt
 
@@ -35,17 +55,25 @@ Transactions saved to: /home/fs/code/git-repo/uniswapV3-prac/broadcast/DeployDev
 ```
 
 查询余额：
-`$ cast --to-dec 0x00000000000000000000000000000000000000000000011153ce5e56cf880000| cast --from-wei`
+
+```
+cast --to-dec 0x00000000000000000000000000000000000000000000011153ce5e56cf880000| cast --from-wei
+```
 
 `out: 5042.000000000000000000`
 
-查询池子地址：
-`$ cast call POOL_ADDRESS "slot0()"| xargs cast --abi-decode "a()(uint160,int24)"`
+查询池子slot0信息：
 
-`cast call 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 "slot0()"| xargs cast --abi-decode "a()(uint160,int24)"`
+````
+cast call POOL_ADDRESS "slot0()"| xargs cast --abi-decode "a()(uint160,int24)"
+
+cast call 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 "slot0()"| xargs cast --abi-decode "a()(uint160,int24)"
+````
 
 `5602277097478614198912276234240`
 `85176`
+
+
 
 UI相关设置：
 设置app.js中的合约地址，并在浏览器中安装metamask插件

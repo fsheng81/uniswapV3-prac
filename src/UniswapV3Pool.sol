@@ -1,10 +1,8 @@
-// SPDX-License-Identifier: BUSL-1.1
-pragma solidity ^0.8.14;
-
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.0;
 import "./interfaces/IERC20.sol";
 import "./interfaces/IUniswapV3MintCallback.sol";
 import "./interfaces/IUniswapV3SwapCallback.sol";
-
 import "./lib/Position.sol";
 import "./lib/Tick.sol";
 
@@ -40,16 +38,12 @@ contract UniswapV3Pool {
     int24 internal constant MIN_TICK = -887272;
     int24 internal constant MAX_TICK = -MIN_TICK;
 
-    // Pool tokens, immutable
     address public immutable token0;
     address public immutable token1;
 
-    // First slot will contain essential data
     struct Slot0 {
-        // Current sqrt(P)
-        uint160 sqrtPriceX96;
-        // Current tick
-        int24 tick;
+        uint160 sqrtPriceX96; /* current sqrt of price */
+        int24 tick; /* current tick */
     }
 
     struct CallbackData {
@@ -59,34 +53,38 @@ contract UniswapV3Pool {
     }
 
     Slot0 public slot0;
-
-    // Amount of liquidity, L.
     uint128 public liquidity;
 
-    // Ticks info
     mapping(int24 => Tick.Info) public ticks;
-    // Positions info
     mapping(bytes32 => Position.Info) public positions;
+    /** 如果是 map of map的形式 positions[owner][lowerTick][upperTick] */
+    /** 每个变量都需要32个字节，存在一个slot中，比较占空间 */
 
+    /*  constructor() and initialize() */
+    /*  如果是factory 则需要initialize() 
+        另外有的可升级模式是constructor没有参数 */
     constructor(
-        address token0_,
-        address token1_,
+        address _token0,
+        address _token1,
         uint160 sqrtPriceX96,
         int24 tick
     ) {
-        token0 = token0_;
-        token1 = token1_;
-
-        slot0 = Slot0({sqrtPriceX96: sqrtPriceX96, tick: tick});
+        token0 = _token0;
+        token1 = _token1;
+        slot0 = Slot0({
+            sqrtPriceX96: sqrtPriceX96,
+            tick: tick
+        });
     }
 
     function mint(
         address owner,
         int24 lowerTick,
         int24 upperTick,
-        uint128 amount,
+        uint128 amount, /** 期待的liquidity */
         bytes calldata data
     ) external returns (uint256 amount0, uint256 amount1) {
+        /** 首先检查入参 */
         if (
             lowerTick >= upperTick ||
             lowerTick < MIN_TICK ||
@@ -95,6 +93,7 @@ contract UniswapV3Pool {
 
         if (amount == 0) revert ZeroLiquidity();
 
+        /** 更新ticks position信息 */
         ticks.update(lowerTick, amount);
         ticks.update(upperTick, amount);
 
@@ -105,34 +104,32 @@ contract UniswapV3Pool {
         );
         position.update(amount);
 
-        amount0 = 0.998976618347425280 ether; // TODO: replace with calculation
-        amount1 = 5000 ether; // TODO: replace with calculation
+        /** 直接硬编码计算出来 */
+        amount0 = 0.998976618347425280 ether;
+        amount1 = 5000 ether;
 
         liquidity += uint128(amount);
 
+        /** 调用callback()来铸造 */
         uint256 balance0Before;
         uint256 balance1Before;
         if (amount0 > 0) balance0Before = balance0();
-        if (amount1 > 0) balance1Before = balance1();
+        if (amount1 > 1) balance1Before = balance1();
         IUniswapV3MintCallback(msg.sender).uniswapV3MintCallback(
             amount0,
             amount1,
             data
         );
+
+        /** 检查是否已经传入流动性 */
+        /** 应该是相等的 */
         if (amount0 > 0 && balance0Before + amount0 > balance0())
             revert InsufficientInputAmount();
         if (amount1 > 0 && balance1Before + amount1 > balance1())
             revert InsufficientInputAmount();
-
-        emit Mint(
-            msg.sender,
-            owner,
-            lowerTick,
-            upperTick,
-            amount,
-            amount0,
-            amount1
-        );
+        
+        /** amount为流动性 */
+        emit Mint(msg.sender, owner, lowerTick, upperTick, amount, amount0, amount1);
     }
 
     function swap(address recipient, bytes calldata data)
@@ -169,11 +166,6 @@ contract UniswapV3Pool {
         );
     }
 
-    ////////////////////////////////////////////////////////////////////////////
-    //
-    // INTERNAL
-    //
-    ////////////////////////////////////////////////////////////////////////////
     function balance0() internal returns (uint256 balance) {
         balance = IERC20(token0).balanceOf(address(this));
     }

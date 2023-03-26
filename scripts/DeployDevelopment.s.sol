@@ -14,7 +14,9 @@ contract DeployDevelopment is Script {
         int24 currentTick = 85176;
         uint160 currentSqrtP = 5602277097478614198912276234240;
 
-        vm.startBroadcast();
+        vm.startBroadcast(); // 开始部署指令
+
+        // new()函数部署一个token：
         ERC20Mintable token0 = new ERC20Mintable("Wrapped Ether", "WETH", 18);
         ERC20Mintable token1 = new ERC20Mintable("USD Coin", "USDC", 18);
 
@@ -26,7 +28,7 @@ contract DeployDevelopment is Script {
         );
 
         UniswapV3Manager manager = new UniswapV3Manager();
-
+        // msg.sender 是 用户地址，保证能够完成Mint()和swap()
         token0.mint(msg.sender, wethBalance);
         token1.mint(msg.sender, usdcBalance);
 

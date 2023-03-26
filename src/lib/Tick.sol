@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: BUSL-1.1
-pragma solidity ^0.8.14;
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.0;
 
 library Tick {
     struct Info {
@@ -8,16 +8,16 @@ library Tick {
     }
 
     function update(
-        mapping(int24 => Tick.Info) storage self,
+        mapping(int24 => Tick.Info) storage self, /** storage引用 只有library有这个用法 */
         int24 tick,
-        uint128 liquidityDelta
+        uint128 liquidityDelta /** 都是正整数 */
     ) internal {
         Tick.Info storage tickInfo = self[tick];
         uint128 liquidityBefore = tickInfo.liquidity;
         uint128 liquidityAfter = liquidityBefore + liquidityDelta;
 
         if (liquidityBefore == 0) {
-            tickInfo.initialized = true;
+            tickInfo.initialized = true; /** 第一次初始化 */
         }
 
         tickInfo.liquidity = liquidityAfter;
