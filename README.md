@@ -1,6 +1,6 @@
 uniswapV3-prac to understand the framework of uniswapV3.
 
-dev1 仅包括最基础的实现，单用户的mint()，不跨tick的swap()，不涉及solidity复杂的计算，也不涉及手续费的收取。以token0 = WETH, token1 = USDC为例，事先用Python实现计算功能，了解基本框架。
+dev1：仅包括最基础的实现，单用户的mint()，不跨tick的swap()，不涉及solidity复杂的计算，也不涉及手续费的收取。以token0 = WETH, token1 = USDC为例，事先用Python实现计算功能，了解基本框架。
 
 结构为：
 
