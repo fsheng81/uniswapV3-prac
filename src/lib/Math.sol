@@ -53,6 +53,9 @@ library Math {
         uint256 amountIn,
         bool zeroForOne
     ) internal pure returns (uint160 sqrtPriceNextX96) {
+        // zeroForOne == true 价格下降
+        // roundUp则代表少下降一点
+        // 反之....
         sqrtPriceNextX96 = zeroForOne
             ? getNextSqrtPriceFromAmount0RoundingUp(
                 sqrtPriceX96,

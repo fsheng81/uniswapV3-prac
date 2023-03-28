@@ -3,6 +3,7 @@ pragma solidity ^0.8.14;
 
 import "../UniswapV3Pool.sol";
 
+// 计算 create2() 的 pool的地址
 library PoolAddress {
     function computeAddress(
         address factory,
@@ -13,9 +14,7 @@ library PoolAddress {
         require(token0 < token1);
 
         pool = address(
-            uint160(
-                uint256(
-                    keccak256(
+            uint160(uint256(keccak256(
                         abi.encodePacked(
                             hex"ff",
                             factory,
@@ -23,10 +22,9 @@ library PoolAddress {
                                 abi.encodePacked(token0, token1, tickSpacing)
                             ),
                             keccak256(type(UniswapV3Pool).creationCode)
-                        )
-                    )
-                )
-            )
+                            // creationCode 构造字节
+                            // runtimeCode 运行时
+            ))))
         );
     }
 }

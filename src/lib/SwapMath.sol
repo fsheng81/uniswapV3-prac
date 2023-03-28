@@ -3,6 +3,21 @@ pragma solidity ^0.8.14;
 
 import "./Math.sol";
 
+// 单步交易的计算：
+// 1. 判断交易方向
+// 2. 计算cur -> target 所需的 tokenIn 的数量。种类由交易方向决定
+// 3. 判断是否已经耗光所有 tokenIn，计算得到实际的 nextPrice
+// 4. 再由 nextPrice 计算 amount0 amount1
+
+// Math.sol中的 roundUp 分析：
+// 1. 计算 nextPrice 时，        
+// zeroForOne == true 价格下降
+// roundUp则代表少下降一点
+// 反之....
+
+// 2. 计算amount时候
+// 统一都是 roundUp
+
 library SwapMath {
     function computeSwapStep(
         uint160 sqrtPriceCurrentX96,
