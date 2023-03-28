@@ -1,6 +1,10 @@
 uniswapV3-prac to understand the framework of uniswapV3.
 
-dev1：仅包括最基础的实现，单用户的mint()，不跨tick的swap()，不涉及solidity复杂的计算，也不涉及手续费的收取。以token0 = WETH, token1 = USDC为例，事先用Python实现计算功能，了解基本框架。
+dev2：仅包括最基础的实现，单用户的mint()，不跨tick的swap()，不涉及solidity复杂的计算，也不涉及手续费的收取。以token0 = WETH, token1 = USDC为例，事先用Python实现计算功能，了解基本框架。
+
+dev3：增加了工厂类、solidity的数学计算、多个池子计算、跨tick交易。不涉及交易费用、预言机等。
+
+
 
 结构为：
 
@@ -14,6 +18,12 @@ dev1：仅包括最基础的实现，单用户的mint()，不跨tick的swap()，
 |- test # 单元测试用例
 |- ui # React实现的UI界面
 ```
+
+## 说明
+
+可以把流动性看做是一种阻力，在swap时，当输入了amount后，阻止价格移动的阻力。流动性越大，价格移动的越缓慢。
+
+流动性，价格差，token量，总共有三个变量，相互的求解方式分别在 liquidityMath.sol和 Math.sol文件中
 
 
 
