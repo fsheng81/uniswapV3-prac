@@ -4,12 +4,14 @@ pragma solidity ^0.8.14;
 import "./interfaces/IUniswapV3PoolDeployer.sol";
 import "./UniswapV3Pool.sol";
 
+// 工厂类合约，根据不同的token-pair来创造对应的池子
 contract UniswapV3Factory is IUniswapV3PoolDeployer {
     error PoolAlreadyExists();
     error ZeroAddressNotAllowed();
     error TokensMustBeDifferent();
     error UnsupportedTickSpacing();
 
+    // create2() 的salt值通过这个来计算
     event PoolCreated(
         address indexed token0,
         address indexed token1,
@@ -20,9 +22,11 @@ contract UniswapV3Factory is IUniswapV3PoolDeployer {
     PoolParameters public parameters;
 
     mapping(uint24 => bool) public tickSpacings;
-    mapping(address => mapping(address => mapping(uint24 => address)))
-        public pools;
 
+    // [token0][token1][tickSpacing]
+    mapping(address => mapping(address => mapping(uint24 => address))) public pools;
+
+    // 如果token越稳定，则tickSpacing越小
     constructor() {
         tickSpacings[10] = true;
         tickSpacings[60] = true;
@@ -36,6 +40,7 @@ contract UniswapV3Factory is IUniswapV3PoolDeployer {
         if (tokenX == tokenY) revert TokensMustBeDifferent();
         if (!tickSpacings[tickSpacing]) revert UnsupportedTickSpacing();
 
+        // tokenX < tokenY. 保证后续 zeroForOne 的顺序
         (tokenX, tokenY) = tokenX < tokenY
             ? (tokenX, tokenY)
             : (tokenY, tokenX);
@@ -57,7 +62,7 @@ contract UniswapV3Factory is IUniswapV3PoolDeployer {
             }()
         );
 
-        delete parameters;
+        delete parameters; // 清空结构体
 
         pools[tokenX][tokenY][tickSpacing] = pool;
         pools[tokenY][tokenX][tickSpacing] = pool;
