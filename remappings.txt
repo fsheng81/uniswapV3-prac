@@ -1,2 +1,6 @@
 solmate/=lib/solmate/src/
-forge-std/=lib/forge-std/src
+forge-std/=lib/forge-std/src/
+prb-math/=lib/prb-math/src/
+bytes-utils/=lib/solidity-bytes-utils/contracts/
+
+src/=src/

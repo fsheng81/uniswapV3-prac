@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.14;
 
-import "prb-math/PRBMath.sol"; // github库
+import "prb-math/Common.sol"; // github库
 import "./FixedPoint96.sol";
 
 // 功能：mint()时
@@ -46,13 +46,14 @@ library LiquidityMath {
             (sqrtPriceAX96, sqrtPriceBX96) = (sqrtPriceBX96, sqrtPriceAX96);
 
         // sqrtPriceAX96 * sqrtPriceBX96 / FixedPoint96.Q96
-        uint256 intermediate = PRBMath.mulDiv(
+        // mulDiv() in PRB-MATH
+        uint256 intermediate = mulDiv(
             sqrtPriceAX96,
             sqrtPriceBX96,
             FixedPoint96.Q96
         );
         liquidity = uint128(
-            PRBMath.mulDiv(amount0, intermediate, sqrtPriceBX96 - sqrtPriceAX96)
+            mulDiv(amount0, intermediate, sqrtPriceBX96 - sqrtPriceAX96)
         );
     }
 
@@ -66,7 +67,7 @@ library LiquidityMath {
             (sqrtPriceAX96, sqrtPriceBX96) = (sqrtPriceBX96, sqrtPriceAX96);
 
         liquidity = uint128(
-            PRBMath.mulDiv(
+            mulDiv(
                 amount1,
                 FixedPoint96.Q96,
                 sqrtPriceBX96 - sqrtPriceAX96

@@ -128,8 +128,13 @@ https://github.com/foundry-rs/foundry/tree/master/foundryup
 https://github.com/foundry-rs/foundry/tree/nightly-94777647f6ea5d34572a1b15c9b57e35b8c77b41
 
 
-
-
+## prb-math问题
+remapping.txt中含有一下内容，导致编译失败，
+所以在自己的remapping.txt中也添加。
+```
+src/=src/
+```
+注意到PRB-MATH的整改，所以mulDiv()函数不用 PRBMATH.mulDiv()
 
 ### EIP-170 合约长度
 

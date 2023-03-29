@@ -2,7 +2,7 @@
 pragma solidity ^0.8.14;
 
 import "./FixedPoint96.sol";
-import "prb-math/PRBMath.sol";
+import "prb-math/Common.sol";
 
 // 功能：swap()时 根据现有流动性 和输入token数 计算变化后的价格
 // 功能：mint()和swap()时，根据 根据价格差 和流动性 计算token数量
@@ -96,7 +96,7 @@ library Math {
         return
             uint160(
                 uint256(sqrtPriceX96) +
-                    PRBMath.mulDiv(amountIn, FixedPoint96.Q96, liquidity)
+                    mulDiv(amountIn, FixedPoint96.Q96, liquidity)
             );
     }
 
@@ -105,7 +105,7 @@ library Math {
         uint256 b,
         uint256 denominator
     ) internal pure returns (uint256 result) {
-        result = PRBMath.mulDiv(a, b, denominator);
+        result = mulDiv(a, b, denominator);
         if (mulmod(a, b, denominator) > 0) { // 有余数
             require(result < type(uint256).max);
             result++;
