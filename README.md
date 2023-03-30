@@ -159,9 +159,11 @@ src/=src/
 
 
 
-## 测试用例
+## 测试/精度
 
-说明测试用例的数值的来源，以及可靠性。
+说明测试用例的数值的来源，以及可靠性。莫非是参考官方uniswapV3的测试文档？
+
+还是说，用Python只能够大致校验这些值。
 
 ```bash
 forge test -vv # 不同个数的v会增加相应的打印信息 最多vvvv
@@ -169,7 +171,68 @@ forge test -vv # 不同个数的v会增加相应的打印信息 最多vvvv
 
 采用的是`assertEq()`，因此很多定点数的结果都需要所有小数位确定。
 
+如果采用Python来计算：分别计算`price_to_tick()`和 `tick_to_price()`，得到的结果有一定的误差。
 
+```python
+print(MathTool.tick_to_price(85176))
+print(MathTool.price_to_tick(4999.904785770063))
+
+# 其中
+def price_to_tick(p):
+    return math.floor(math.log(p, 1.0001))
+def tick_to_price(tick):
+    return math.pow(1.0001, tick)
+
+# 结果
+4999.904785770063
+85176
+```
+
+### 注入流动性
+
+```python
+def mint(amount0, amount1, price_low, price_cur, price_upp):
+    sqrtp_low = price_to_sqrtPriceX96(price_low)
+    sqrtp_cur = price_to_sqrtPriceX96(price_cur)
+    sqrtp_upp = price_to_sqrtPriceX96(price_upp)
+
+    amount_0 = amount0 * eth
+    amount_1 = amount1 * eth
+
+    liq0 = liquidity0_X96(amount_0, sqrtp_cur, sqrtp_upp)
+    liq1 = liquidity1_X96(amount_1, sqrtp_cur, sqrtp_low)
+    liq = int(min(liq0, liq1))
+
+    # if price_cur in tick range.
+    amount_0_new = calc_amount0(liq, sqrtp_cur, sqrtp_upp) / eth
+    amount_1_new = calc_amount1(liq, sqrtp_low, sqrtp_cur) / eth
+    return (liq, amount_0_new, amount_1_new)
+```
+
+分别执行两个测试用例，可以看到其中值的不一致：
+
+```python
+# mints[0] = mintParams(4545, 5500, 1 ether, 5000 ether);
+() = (0.987078348444137445, 5000) # solidity.
+() = (0.9989766183474252, 5000.0) # python.
+
+# mints[1] = mintParams(4000, 6250,(1 ether * 75) / 100, (5000 ether * 75) / 100);
+() = (0.746110926570506489 ether, 5000 * 0.75 ether) # 根据solidity
+() = (0.75, 3750.0) # in python.
+```
+
+
+
+### 执行单区间交易
+
+```
+```
+
+
+
+### 多次mint()后的注入货币
+
+参见Manager.t.sol的`testMintOverlappingRanges()`测试用例中，当两次 mint() 注入了两个position后，总输入的token不尽相同。
 
 
 

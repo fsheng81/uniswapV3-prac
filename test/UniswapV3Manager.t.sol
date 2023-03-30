@@ -92,6 +92,60 @@ contract UniswapV3ManagerTest is Test, TestUtils {
         );
     }
 
+    function testMintInRangeAnother() public {
+        IUniswapV3Manager.MintParams[]
+            memory mints = new IUniswapV3Manager.MintParams[](1);
+        mints[0] = mintParams(
+            4000,
+            6250,
+            (1 ether * 75) / 100,
+            (5000 ether * 75) / 100
+        );
+        TestCaseParams memory params = TestCaseParams({
+            wethBalance: 1 ether,
+            usdcBalance: 5000 ether,
+            currentPrice: 5000,
+            mints: mints,
+            transferInMintCallback: true,
+            transferInSwapCallback: true,
+            mintLiqudity: true
+        });
+        (uint256 poolBalance0, uint256 poolBalance1) = setupTestCase(params);
+
+        (uint256 expectedAmount0, uint256 expectedAmount1) = (
+            (0.746110926570506489 ether),
+            // 这个误差就比较大了 0.987078348444137445 * 0.75 = 0.7403087613331031
+            (5000 * 0.75 ether)
+        );
+
+        assertEq(
+            poolBalance0,
+            expectedAmount0,
+            "incorrect weth deposited amount"
+        );
+        assertEq(
+            poolBalance1,
+            expectedAmount1,
+            "incorrect usdc deposited amount"
+        );
+
+        assertMintState(
+            ExpectedStateAfterMint({
+                pool: pool,
+                token0: weth,
+                token1: usdc,
+                amount0: expectedAmount0,
+                amount1: expectedAmount1,
+                lowerTick: mints[0].lowerTick,
+                upperTick: mints[0].upperTick,
+                positionLiquidity: liquidity(mints[0], 5000),
+                currentLiquidity: liquidity(mints[0], 5000),
+                sqrtPriceX96: sqrtP(5000),
+                tick: tick(5000)
+            })
+        );
+    }
+
     function testMintRangeBelow() public {
         IUniswapV3Manager.MintParams[]
             memory mints = new IUniswapV3Manager.MintParams[](1);
@@ -213,6 +267,7 @@ contract UniswapV3ManagerTest is Test, TestUtils {
 
         (uint256 amount0, uint256 amount1) = (
             1.733189275014643934 ether,
+            // 0.746110926570506489 + 0.987078348444137445 = 1.7331892750146 438
             8750 ether
         );
 
