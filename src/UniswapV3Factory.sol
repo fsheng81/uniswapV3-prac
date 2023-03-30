@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: BUSL-1.1
-pragma solidity ^0.8.14;
+pragma solidity ^0.8.0;
 
 import "./interfaces/IUniswapV3PoolDeployer.sol";
 import "./UniswapV3Pool.sol";
@@ -49,6 +49,7 @@ contract UniswapV3Factory is IUniswapV3PoolDeployer {
         if (pools[tokenX][tokenY][tickSpacing] != address(0))
             revert PoolAlreadyExists();
 
+        // 用途？
         parameters = PoolParameters({
             factory: address(this),
             token0: tokenX,

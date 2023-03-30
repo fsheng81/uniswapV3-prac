@@ -35,6 +35,7 @@ forge install foundry-rs/forge-std
 forge install Rari-Capital/solmate
 forge install GNSPS/solidity-bytes-utils
 forge install paulrberg/prb-math
+forge install abdk-consulting/abdk-libraries-solidity
 
 anvil # 另一个bash
 forge test # 执行测试用例
@@ -157,6 +158,16 @@ src/=src/
 ```
 
 
+
+## 测试用例
+
+说明测试用例的数值的来源，以及可靠性。
+
+```bash
+forge test -vv # 不同个数的v会增加相应的打印信息 最多vvvv
+```
+
+采用的是`assertEq()`，因此很多定点数的结果都需要所有小数位确定。
 
 
 

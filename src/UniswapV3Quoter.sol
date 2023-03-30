@@ -1,10 +1,14 @@
 // SPDX-License-Identifier: BUSL-1.1
-pragma solidity ^0.8.14;
+pragma solidity ^0.8.0;
 
 import "./interfaces/IUniswapV3Pool.sol";
 import "./lib/Path.sol";
 import "./lib/PoolAddress.sol";
 import "./lib/TickMath.sol";
+
+// 功能：Dapp客户端能够在不执行交易的情况下，计算交易的价格
+// 模拟交易，并在最后转账的时候 调用自己的 swapCallback()
+// 而不是 manager.swapCallback()
 
 contract UniswapV3Quoter {
     using Path for bytes;
@@ -83,8 +87,7 @@ contract UniswapV3Quoter {
 
         bool zeroForOne = params.tokenIn < params.tokenOut;
 
-        try
-            pool.swap(
+        try pool.swap(
                 address(this),
                 zeroForOne,
                 params.amountIn,
@@ -113,15 +116,17 @@ contract UniswapV3Quoter {
             ? uint256(-amount1Delta)
             : uint256(-amount0Delta);
 
-        (uint160 sqrtPriceX96After, int24 tickAfter) = IUniswapV3Pool(pool)
-            .slot0();
+        (uint160 sqrtPriceX96After, int24 tickAfter) = IUniswapV3Pool(pool).slot0();
 
+        // ptr 指向 空闲内存首地址
         assembly {
             let ptr := mload(0x40)
             mstore(ptr, amountOut)
             mstore(add(ptr, 0x20), sqrtPriceX96After)
             mstore(add(ptr, 0x40), tickAfter)
             revert(ptr, 96)
+            // 最终 revert() 回退 并发送 96=3*32bytes 的数据
+            // 也就是刚存储的 amountOut sqrtPriceX96After tickAfter
         }
     }
 

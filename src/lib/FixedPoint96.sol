@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-pragma solidity ^0.8.14;
+pragma solidity ^0.8.0;
 
 // 采用定点数：Q64.96
 // 十六进制与实际小数的转换关系为：

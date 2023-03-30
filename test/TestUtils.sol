@@ -242,7 +242,7 @@ abstract contract TestUtils is Test {
     ) internal pure returns (bytes memory) {
         return
             abi.encode(
-                UniswapV3Pool.CallbackData({
+                IUniswapV3Pool.CallbackData({
                     token0: token0_,
                     token1: token1_,
                     payer: payer

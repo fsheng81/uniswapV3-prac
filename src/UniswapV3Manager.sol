@@ -9,13 +9,41 @@ import "./lib/Path.sol";
 import "./lib/PoolAddress.sol";
 import "./lib/TickMath.sol";
 
+/**
+    交易池子的包装类，用于处理多池子路径、实际token交易等逻辑。
+    所有swap输入的token都在manager账户下：【TODO：存疑】
+
+    mint()          // 输入 amount + [tickLow, tickUp]
+                    // 计算流动性
+                    // 调用 pool.mint() 执行转账
+                    // 校验 amountMin
+
+    swapSingle()    // 针对单个池子
+                    // 输入：期望输入的amount 能够接受的最低价格
+                    // 调用 manager 的_swap() 执行 计算并转账
+
+    swap()          // 针对多个池子
+                    // 不断切分 bytes path 针对每一组池子调用 _swap()
+                    // 第一轮 tokenIn -> manager. tokenOut -> 设置的 recipient
+                    // 第二轮开始
+                    // 最后一轮 tokenIn -> 
+
+    _swap()         // 核心交易
+                    // 预处理：交易方向 、滑点保护
+                    // 最后 选择 pool.swap()输出的 amount0/1 作为 amountOut
+
+    getPool()       // 根据 tokenAddr + tickSpacing 计算池子地址
+    uniswapV3MintCallback()
+    uniswapV3SwapCallback()
+
+ */
 contract UniswapV3Manager is IUniswapV3Manager {
     using Path for bytes;
 
     error SlippageCheckFailed(uint256 amount0, uint256 amount1);
     error TooLittleReceived(uint256 amountOut);
 
-    address public immutable factory;
+    address public immutable factory; // 赋值后不可更改
 
     constructor(address factory_) {
         factory = factory_;
@@ -25,6 +53,7 @@ contract UniswapV3Manager is IUniswapV3Manager {
         public
         returns (uint256 amount0, uint256 amount1)
     {
+        // getPool()实现
         address poolAddress = PoolAddress.computeAddress(
             factory,
             params.tokenA,
@@ -33,14 +62,12 @@ contract UniswapV3Manager is IUniswapV3Manager {
         );
         IUniswapV3Pool pool = IUniswapV3Pool(poolAddress);
 
+        // 获得现价
         (uint160 sqrtPriceX96, ) = pool.slot0();
-        uint160 sqrtPriceLowerX96 = TickMath.getSqrtRatioAtTick(
-            params.lowerTick
-        );
-        uint160 sqrtPriceUpperX96 = TickMath.getSqrtRatioAtTick(
-            params.upperTick
-        );
+        uint160 sqrtPriceLowerX96 = TickMath.getSqrtRatioAtTick(params.lowerTick);
+        uint160 sqrtPriceUpperX96 = TickMath.getSqrtRatioAtTick(params.upperTick);
 
+        // 计算流动性
         uint128 liquidity = LiquidityMath.getLiquidityForAmounts(
             sqrtPriceX96,
             sqrtPriceLowerX96,

@@ -49,6 +49,7 @@ library TickMath {
         uint256 r = ratio;
         uint256 msb = 0;
 
+        // 计算 msb 最大有效数位
         assembly {
             let f := shl(7, gt(r, 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF))
             msb := or(msb, f)
@@ -92,6 +93,7 @@ library TickMath {
         if (msb >= 128) r = ratio >> (msb - 127);
         else r = ratio << (127 - msb);
 
+        // 根据最大有效为 逐位判断：
         int256 log_2 = (int256(msb) - 128) << 64;
 
         assembly {
