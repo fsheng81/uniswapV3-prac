@@ -221,7 +221,7 @@ def mint(amount0, amount1, price_low, price_cur, price_upp):
 () = (0.75, 3750.0) # in python.
 ```
 
-
+但是对比`testMintOverlappingRanges()`，可以基本认为 `mint()`时，其他position不产生影响。
 
 ### 执行单区间交易
 
