@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { useContext, useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { MetaMaskContext } from "../contexts/MetaMask";
 
 const PoolABI = require('../abi/Pool.json');
@@ -14,8 +14,8 @@ const getEvents = (pool) => {
 }
 
 const subscribeToEvents = (pool, callback) => {
-  pool.once("Mint", (a, b, c, d, e, f, g, event) => callback(event));
-  pool.once("Swap", (a, b, c, d, e, f, g, event) => callback(event));
+  pool.on("Mint", (a, b, c, d, e, f, g, event) => callback(event));
+  pool.on("Swap", (a, b, c, d, e, f, g, event) => callback(event));
 }
 
 const renderAmount = (amount) => {
@@ -51,10 +51,16 @@ const renderEvent = (event, i) => {
     case 'Swap':
       content = renderSwap(event.args);
       break;
+
+    default:
+      return;
   }
 
   return (
-    <li key={i}>{content}</li>
+    <tr key={i}>
+      <td className="pr-2">{event.pairID}</td>
+      <td>{content}</td>
+    </tr>
   )
 }
 
@@ -63,56 +69,78 @@ const isMintOrSwap = (event) => {
 }
 
 const cleanEvents = (events) => {
-  return events
-    .sort((a, b) => b.blockNumber - a.blockNumber)
-    .filter((el, i, arr) => {
-      return i === 0 || el.blockNumber != arr[i - 1].blockNumber || el.logIndex != arr[i - 1].logIndex
-    })
+  const eventsMap = events.reduce((acc, event) => {
+    acc[`${event.address}_${event.transactionHash}`] = event;
+    return acc;
+  }, {});
+
+  return Object.keys(eventsMap)
+    .map(k => eventsMap[k])
+    .sort((a, b) => b.blockNumber - a.blockNumber || b.logIndex - a.logIndex);
 }
 
 const eventsReducer = (state, action) => {
   switch (action.type) {
     case 'add':
-      return cleanEvents([action.value, ...state]);
+      return cleanEvents(state.concat(action.value));
 
-    case 'set':
-      return cleanEvents(action.value);
+    default:
+      return;
   }
 }
 
-const EventsFeed = (props) => {
-  const config = props.config;
+
+const EventsList = ({ events }) => {
+  return (
+    <table className="py-6 mb-2">
+      <tbody>
+        {events.filter(isMintOrSwap).map(renderEvent)}
+      </tbody>
+    </table>
+  )
+}
+
+const pairID = (pair) => `${pair.token0.symbol}/${pair.token1.symbol}`;
+const addPairIDToEvents = (events, pair) => events.map(ev => { ev.pairID = pairID(pair); return ev });
+
+const EventsFeed = ({ pairs }) => {
   const metamaskContext = useContext(MetaMaskContext);
   const [events, setEvents] = useReducer(eventsReducer, []);
-  const [pool, setPool] = useState();
 
   useEffect(() => {
     if (metamaskContext.status !== 'connected') {
       return;
     }
 
-    if (!pool) {
-      const newPool = new ethers.Contract(
-        config.poolAddress,
+    const pairContracts = pairs.map((pair) => {
+      const contract = new ethers.Contract(
+        pair.address,
         PoolABI,
         new ethers.providers.Web3Provider(window.ethereum)
       );
 
-      subscribeToEvents(newPool, event => setEvents({ type: 'add', value: event }));
+      subscribeToEvents(
+        contract,
+        event => setEvents({
+          type: 'add',
+          value: addPairIDToEvents([event], pair)
+        })
+      );
+      getEvents(contract)
+        .then(events => setEvents({
+          type: 'add',
+          value: addPairIDToEvents(events, pair)
+        }));
 
-      getEvents(newPool).then(events => {
-        setEvents({ type: 'set', value: events });
-      });
+      return contract;
+    });
 
-      setPool(newPool);
-    }
-  }, [metamaskContext.status, events, pool, config]);
+    return () => {
+      pairContracts.forEach((pair) => pair.removeAllListeners());
+    };
+  }, [metamaskContext.status, setEvents, pairs]);
 
-  return (
-    <ul className="py-6">
-      {events.filter(isMintOrSwap).map(renderEvent)}
-    </ul>
-  );
+  return (<EventsList events={events} />);
 }
 
 export default EventsFeed;

@@ -89,7 +89,7 @@ cast call 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 "slot0()"| xargs cast --abi
 
 
 
-UI相关设置：
+#### UI设置：
 设置app.js中的合约地址，并在浏览器中安装metamask插件
 `npm install -g yarn`
 
@@ -136,6 +136,27 @@ remapping.txt中含有一下内容，导致编译失败，
 src/=src/
 ```
 注意到PRB-MATH的整改，所以mulDiv()函数不用 PRBMATH.mulDiv()
+
+### yarn UI 报错
+
+报错内容：
+
+```
+Compiled with problems:
+
+ERROR in ./src/lib/pathFinder.js 3:0-39
+
+Module not found: Error: Can't resolve 'ngraph.graph' in '/home/fs/code/git-repo/uniswapV3-prac/ui/src/lib'
+
+
+ERROR in ./src/lib/pathFinder.js 4:0-31
+
+Module not found: Error: Can't resolve 'ngraph.path' in '/home/fs/code/git-repo/uniswapV3-prac/ui/src/lib'
+```
+
+
+
+yarn add ngraph.graph
 
 ### EIP-170 合约长度
 
@@ -221,7 +242,7 @@ def mint(amount0, amount1, price_low, price_cur, price_upp):
 () = (0.75, 3750.0) # in python.
 ```
 
-但是对比`testMintOverlappingRanges()`，可以基本认为 `mint()`时，其他position不产生影响。
+对比`testMintOverlappingRanges()`，可以基本认为 `mint()`时，其他position不产生影响。
 
 ### 执行单区间交易
 
@@ -230,9 +251,13 @@ def mint(amount0, amount1, price_low, price_cur, price_upp):
 
 
 
-### 多次mint()后的注入货币
+### 交易费
 
-参见Manager.t.sol的`testMintOverlappingRanges()`测试用例中，当两次 mint() 注入了两个position后，总输入的token不尽相同。
+
+
+
+
+
 
 
 
