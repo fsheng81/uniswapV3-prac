@@ -90,7 +90,7 @@ cast call 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 "slot0()"| xargs cast --abi
 
 
 #### UI设置：
-设置app.js中的合约地址，并在浏览器中安装metamask插件
+设置app.js中的合约地址，并在浏览器中安装metamask插件。
 `npm install -g yarn`
 
 执行 `cd ui & yarn & yarn start`
@@ -100,6 +100,33 @@ cast call 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 "slot0()"| xargs cast --abi
 App.js执行components的组件，组件最后执行content中的metaMask.js
 
 
+
+从dev3开始，在yarn start之前，需要
+
+```bash
+source .envrc
+make deploy
+```
+
+结果：
+
+```
+== Logs ==
+  WETH address 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  UNI address 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+  USDC address 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  USDT address 0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9
+  WBTC address 0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+  Factory address 0x5FC8d32690cc91D4c39d9d3abcBD16989F875707
+  Manager address 0x0165878A594ca255338adfa4d48449f69242Eb8F
+  Quoter address 0xa513E6E4b8f2a923D98304ec87F64353C4D5C853
+  USDT/USDC address 0x1eb6Cb8cdA2035356113362F5636a65038544C75
+  WBTC/USDT address 0x469070001aD1523f36290c82eE5001eD142FC495
+  WETH/UNI address 0xE7d90366732CE294C0867aBAb7FbB9bE17511145
+  WETH/USDC address 0xBe9A08dFB3386a22F8Dd9E28f757d3AE44571ae9
+```
+
+再执行UI。
 
 ## 排查报错
 
@@ -137,6 +164,17 @@ src/=src/
 ```
 注意到PRB-MATH的整改，所以mulDiv()函数不用 PRBMATH.mulDiv()
 
+### add liquidity fail in metamask
+
+一直在Loading pairs...界面没有跳转
+
+应该使用makefile来部署合约，再启动UI。
+
+```
+source .envrc
+make deploy
+```
+
 ### yarn UI 报错
 
 报错内容：
@@ -157,6 +195,31 @@ Module not found: Error: Can't resolve 'ngraph.path' in '/home/fs/code/git-repo/
 
 
 yarn add ngraph.graph
+
+yarn add ngraph.path
+
+### 找不到 jsbi.ts
+
+Error: ENOENT: no such file or directory, open '/home/fs/code/git-repo/uniswapV3-prac/ui/node_modules/jsbi/lib/jsbi.ts'
+
+来源：uniswapV3-sdk在计算的时候需要js的bigInt库。
+
+### 按钮不灵、WETH/USDC兑换不显示
+
+```
+Compiled with warnings.
+
+Failed to parse source map from '/home/fs/code/git-repo/uniswapV3-prac/ui/node_modules/jsbi/lib/jsbi.ts' file: Error: ENOENT: no such file or directory, open '/home/fs/code/git-repo/uniswapV3-prac/ui/node_modules/jsbi/lib/jsbi.ts'
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+WARNING in ./node_modules/jsbi/dist/jsbi-umd.js
+Module Warning (from ./node_modules/source-map-loader/dist/cjs.js):
+Failed to parse source map from '/home/fs/code/git-repo/uniswapV3-prac/ui/node_modules/jsbi/lib/jsbi.ts' file: Error: ENOENT: no such file or directory, open '/home/fs/code/git-repo/uniswapV3-prac/ui/node_modules/jsbi/lib/jsbi.ts'
+```
+
+
 
 ### EIP-170 合约长度
 
@@ -209,7 +272,7 @@ def tick_to_price(tick):
 85176
 ```
 
-### 注入流动性
+### 流动性:
 
 ```python
 def mint(amount0, amount1, price_low, price_cur, price_upp):
@@ -244,14 +307,22 @@ def mint(amount0, amount1, price_low, price_cur, price_upp):
 
 对比`testMintOverlappingRanges()`，可以基本认为 `mint()`时，其他position不产生影响。
 
-### 执行单区间交易
+### 交易
+
+#### 单区间交易
+
+```
+
+```
+
+#### 跨区间交易
 
 ```
 ```
-
-
 
 ### 交易费
+
+
 
 
 

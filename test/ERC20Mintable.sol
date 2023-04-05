@@ -3,6 +3,8 @@ pragma solidity ^0.8.0;
 
 import "solmate/tokens/ERC20.sol";
 
+// ERC-20 需要实现 mint() 函数
+// 不用公链上的 TOKEN
 contract ERC20Mintable is ERC20 {
     constructor(
         string memory _name,

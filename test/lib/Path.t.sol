@@ -11,7 +11,7 @@ contract PathTest is Test {
             bytes3(uint24(1)),
             bytes20(address(0x2))
         );
-        assertFalse(Path.hasMultiplePools(path));
+        assertFalse(Path.hasMultiplePools(path)); // 此时只有一个交易对
 
         path = bytes.concat(
             bytes20(address(0x1)),
@@ -72,6 +72,8 @@ contract PathTest is Test {
             bytes3(uint24(1)),
             bytes20(address(0x2))
         );
+
+        // skipToken()后，移除 addr1 + tickspacing12
         assertEq(Path.skipToken(path), bytes.concat(bytes20(address(0x2))));
 
         path = bytes.concat(

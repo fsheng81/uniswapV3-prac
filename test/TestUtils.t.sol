@@ -4,6 +4,8 @@ pragma solidity ^0.8.0;
 import "forge-std/Test.sol";
 import "./TestUtils.sol";
 
+// 校验一些基础的计算过程
+
 contract TestUtilsTest is Test, TestUtils {
     function testNearestUsableTick() public {
         assertEq(nearestUsableTick(85176, 60), 85200);

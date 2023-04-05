@@ -3,7 +3,9 @@ pragma solidity ^0.8.0;
 
 import "bytes-utils/BytesLib.sol"; // from GitHub
 
+
 library BytesLibExt {
+
     function toUint24(bytes memory _bytes, uint256 _start)
         internal
         pure
@@ -13,8 +15,10 @@ library BytesLibExt {
         uint24 tempUint;
 
         assembly {
+            // input _start is the addr_size. 
+            // // 也就是 addr + 0x03 后，才是?
+            // 0x3 
             tempUint := mload(add(add(_bytes, 0x3), _start))
-            // 为什么还要+0x3 ?
         }
 
         return tempUint;

@@ -12,6 +12,7 @@ import "../src/UniswapV3Pool.sol";
 import "./ERC20Mintable.sol";
 
 // abstract contract 会被 继承 后才能够被部署
+// 包括 struct ExpectedStateAfterMint{} 检查各个状态
 
 abstract contract TestUtils is Test {
     struct ExpectedStateAfterMint {

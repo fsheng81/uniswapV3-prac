@@ -25,7 +25,8 @@ contract MathTest is Test {
             TickMath.getSqrtRatioAtTick(85176),
             1517882343751509868544
         );
-
+        assertEq(TickMath.getSqrtRatioAtTick(85176), 5602223755577321903022134995689);
+        assertEq(TickMath.getSqrtRatioAtTick(86129), 5875617940067453351001625213169);
         assertEq(amount1, 4999.187247111820044641 ether);
     }
 }
