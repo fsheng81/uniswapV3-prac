@@ -274,6 +274,18 @@ def tick_to_price(tick):
 
 ### 流动性:
 
+### 流动性测试用例
+
+流动性的测试用例包括 manager.t.sol、pool.t.sol，两个文件中使用的用例数值上相同：
+
+```solidity
+// 
+```
+
+
+
+### python实现
+
 ```python
 def mint(amount0, amount1, price_low, price_cur, price_upp):
     sqrtp_low = price_to_sqrtPriceX96(price_low)

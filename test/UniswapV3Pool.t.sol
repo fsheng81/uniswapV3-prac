@@ -14,6 +14,17 @@ import "../src/UniswapV3Pool.sol";
 // 测试用例需要自己实现 callback() 来模拟外部调用
 // 并且在调用后检查所有状态
 
+/**
+
+testMintInRange()
+testMintRangeBelow()
+testMintRangeAbove()
+
+testMintOverlappingRanges() /// 就是两种叠加
+todo: ADD testMintInRange() FOR 4000 - 6250.
+
+ */
+
 contract UniswapV3PoolTest is Test, UniswapV3PoolUtils {
     ERC20Mintable weth;
     ERC20Mintable usdc;

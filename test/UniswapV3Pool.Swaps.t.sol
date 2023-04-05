@@ -11,6 +11,95 @@ import "../src/lib/TickMath.sol";
 import "../src/UniswapV3Factory.sol";
 import "../src/UniswapV3Pool.sol";
 
+/***
+测试 pool 合约中的交易过程：
+
+setupTestCase() // 默认 tickSpacing = 60
+
+testBuyETHOnePriceRange() 
+[4545, 5500, 1, 5000] 
+[42 ether USDC]
+结果：-0.008396774627565324 ether, 
+5604429046402228950611610935846 // sqrtPriceX96
+
+testBuyETHTwoEqualPriceRanges()
+[4545, 5500, 1, 5000] 
+[4545, 5500, 1, 5000]
+[42 ether USDC]
+结果：-0.008398387004109300 ether,
+5603353071940421471240346849555
+
+
+testBuyETHConsecutivePriceRanges()
+[4545, 5500, 1, 5000] 
+[5500, 6250, 1, 5000]
+[10000 ether USDC]
+limitPrice: sqrtP(6106),
+结果：到达limitPrice
+-1.806151062659754716 ether,
+9908.332401339128822272 ether
+6190959796047061453084569894912 // 会溢出一点
+
+testBuyETHPartiallyOverlappingPriceRanges()
+[4545, 5500, 1, 5000] 
+[5001, 6250, 1, 5000]
+[10000 ether USDC]
+limitPrice: sqrtP(6056),
+结果：到达limitPrice
+-1.846400936777913635 ether,
+9902.944543452064503224 ether
+6165559837476377838496291749888 // 会溢出一点
+
+testBuyETHSlippageInterruption() // 测试滑点保护
+limitPrice：sqrtP(5003)
+
+////////////////////// 交换 USDC -> WETH 
+testBuyUSDCOnePriceRange()
+[4545, 5500, 1, 5000] 
+0.01337 ether WETH
+结果：
+0.01337 ether,
+-66.809153442256308009 ether
+5598854004958668990019104567840 // 
+
+
+testBuyUSDCTwoEqualPriceRanges()
+[4545, 5500, 1, 5000]
+[4545, 5500, 1, 5000] 
+0.01337 ether WETH
+结果：
+0.01337 ether,
+-66.809153442256308009 ether
+5600565028166000961017241487850 // 
+
+testBuyUSDCConsecutivePriceRanges()
+[4545, 5500, 1, 5000]
+[4000, 4545, 1, 5000] 
+2 ether WETH
+LIMIT: 4094
+结果：
+1.986532540500686477 ether,
+-9052.445703934334276106 ether
+5069364309721000022884193665024 // 
+
+testBuyUSDCPartiallyOverlappingPriceRanges()
+[4545, 5500, 1, 5000]
+[4000, 4999, 1, 5000] 
+2 ether WETH
+LIMIT: 4128
+结果：
+1.990637766773367340 ether,
+-9282.886546310580739342 ether
+5090370906297125436716365119488 // 
+
+testBuyUSDCSlippageInterruption() // 滑点保护
+testSwapBuyEthNotEnoughLiquidity()
+testSwapBuyUSDCNotEnoughLiquidity()
+testSwapMixed() // 两次交易
+testSwapInsufficientInputAmount() // 发送者没有足够的input
+
+ */
+
 contract UniswapV3PoolSwapsTest is Test, UniswapV3PoolUtils {
     ERC20Mintable weth;
     ERC20Mintable usdc;
@@ -83,7 +172,7 @@ contract UniswapV3PoolSwapsTest is Test, UniswapV3PoolUtils {
                 poolBalance0: uint256(int256(poolBalance0) + amount0Delta),
                 poolBalance1: uint256(int256(poolBalance1) + amount1Delta),
                 sqrtPriceX96: 5604429046402228950611610935846, // 5003.841941749589
-                tick: 85183,
+                tick: 85183, // 交易后的tick还没有考虑到tickSpacing
                 currentLiquidity: liquidity[0].amount
             })
         );
@@ -99,15 +188,15 @@ contract UniswapV3PoolSwapsTest is Test, UniswapV3PoolUtils {
         LiquidityRange memory range = liquidityRange(
             4545,
             5500,
-            1 ether,
-            5000 ether,
-            5000
+            1 ether, // amount0
+            5000 ether, // amount1
+            5000 // current price.
         );
         LiquidityRange[] memory liquidity = new LiquidityRange[](2);
         liquidity[0] = range;
         liquidity[1] = range;
         TestCaseParams memory params = TestCaseParams({
-            wethBalance: 2 ether,
+            wethBalance: 2 ether, // _mint() in ERC-20
             usdcBalance: 10000 ether,
             currentPrice: 5000,
             liquidity: liquidity,
@@ -130,7 +219,7 @@ contract UniswapV3PoolSwapsTest is Test, UniswapV3PoolUtils {
             address(this),
             false,
             swapAmount,
-            sqrtP(5002),
+            sqrtP(5002), // limitPrice
             extra
         );
 
