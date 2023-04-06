@@ -2,9 +2,9 @@ uniswapV3-prac to understand the framework of uniswapV3.
 
 dev2：仅包括最基础的实现，单用户的mint()，不跨tick的swap()，不涉及solidity复杂的计算，也不涉及手续费的收取。以token0 = WETH, token1 = USDC为例，事先用Python实现计算功能，了解基本框架。
 
-dev3：增加了工厂类、solidity的数学计算、多个池子计算、跨tick交易。不涉及交易费用、预言机、tickSpacing等。
+dev3：增加了工厂类、solidity的数学计算、多个池子计算、跨tick交易。不涉及交易费用、预言机等。
 
-
+dev4：增加交易费用、预言机
 
 结构为：
 
