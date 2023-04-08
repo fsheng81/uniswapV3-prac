@@ -204,8 +204,6 @@ Error: ENOENT: no such file or directory, open '/home/fs/code/git-repo/uniswapV3
 
 来源：uniswapV3-sdk在计算的时候需要js的bigInt库。
 
-### 按钮不灵、WETH/USDC兑换不显示
-
 ```
 Compiled with warnings.
 
@@ -217,6 +215,20 @@ To ignore, add // eslint-disable-next-line to the line before.
 WARNING in ./node_modules/jsbi/dist/jsbi-umd.js
 Module Warning (from ./node_modules/source-map-loader/dist/cjs.js):
 Failed to parse source map from '/home/fs/code/git-repo/uniswapV3-prac/ui/node_modules/jsbi/lib/jsbi.ts' file: Error: ENOENT: no such file or directory, open '/home/fs/code/git-repo/uniswapV3-prac/ui/node_modules/jsbi/lib/jsbi.ts'
+```
+
+解决：在ui目录下，添加.env文件
+
+```
+GENERATE_SOURCEMAP = false
+```
+
+
+
+### 按钮不灵、WETH/USDC兑换不显示
+
+```
+
 ```
 
 
