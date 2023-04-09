@@ -36,6 +36,7 @@ forge install Rari-Capital/solmate
 forge install GNSPS/solidity-bytes-utils
 forge install paulrberg/prb-math
 forge install abdk-consulting/abdk-libraries-solidity
+forge install OpenZeppelin/openzeppelin-contracts
 
 anvil # 另一个bash
 forge test # 执行测试用例
