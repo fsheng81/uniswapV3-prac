@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./LiquidityMath.sol";
-import "./Math.sol";
+import "./MathAmount.sol";
 
 // tick 是用于方便表达/搜索 price 的值
 // 但是也承担记录 流动性变化的功能

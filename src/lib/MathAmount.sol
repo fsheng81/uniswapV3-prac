@@ -10,8 +10,7 @@ import "prb-math/Common.sol";
 // 计算过程中的 roundup原则：
 // 最主要是保证 不会凭空创造价值。可以有一定程度的损耗价值。
 
-
-library Math {
+library MathAmount {
     function calcAmount0Delta(
         uint160 sqrtPriceAX96,
         uint160 sqrtPriceBX96,
@@ -33,7 +32,7 @@ library Math {
             );
         } else {
             amount0 =
-                PRBMath.mulDiv(numerator1, numerator2, sqrtPriceBX96) /
+                mulDiv(numerator1, numerator2, sqrtPriceBX96) /
                 sqrtPriceAX96;
         }
     }
@@ -54,7 +53,7 @@ library Math {
                 FixedPoint96.Q96
             );
         } else {
-            amount1 = PRBMath.mulDiv(
+            amount1 = mulDiv(
                 liquidity,
                 (sqrtPriceBX96 - sqrtPriceAX96),
                 FixedPoint96.Q96

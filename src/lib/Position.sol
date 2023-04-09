@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
-
+import "prb-math/Common.sol";
+import "./FixedPoint128.sol";
+import "./LiquidityMath.sol";
 // [owner, uptick, lowTick] -> [liquidity]
 // owner 都是 manager
 library Position {
@@ -31,14 +33,14 @@ library Position {
         uint256 feeGrowthInside1X128
     ) internal {
         uint128 tokensOwed0 = uint128(
-            PRBMath.mulDiv(
+            mulDiv(
                 feeGrowthInside0X128 - self.feeGrowthInside0LastX128,
                 self.liquidity,
                 FixedPoint128.Q128
             )
         );
         uint128 tokensOwed1 = uint128(
-            PRBMath.mulDiv(
+            mulDiv(
                 feeGrowthInside1X128 - self.feeGrowthInside1LastX128,
                 self.liquidity,
                 FixedPoint128.Q128

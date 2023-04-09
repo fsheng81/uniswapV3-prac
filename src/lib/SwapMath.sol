@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity ^0.8.0;
 
-import "./Math.sol";
+import "./MathAmount.sol";
+import "prb-math/Common.sol";
 
 // 单步交易的计算：
 // 1. 判断交易方向
@@ -36,20 +37,20 @@ library SwapMath {
         )
     {
         bool zeroForOne = sqrtPriceCurrentX96 >= sqrtPriceTargetX96;
-        uint256 amountRemainingLessFee = PRBMath.mulDiv(
+        uint256 amountRemainingLessFee = mulDiv(
             amountRemaining,
             1e6 - fee,
             1e6
         );
 
         amountIn = zeroForOne
-            ? Math.calcAmount0Delta(
+            ? MathAmount.calcAmount0Delta(
                 sqrtPriceCurrentX96,
                 sqrtPriceTargetX96,
                 liquidity,
                 true
             )
-            : Math.calcAmount1Delta(
+            : MathAmount.calcAmount1Delta(
                 sqrtPriceCurrentX96,
                 sqrtPriceTargetX96,
                 liquidity,
@@ -59,7 +60,7 @@ library SwapMath {
         if (amountRemainingLessFee >= amountIn)
             sqrtPriceNextX96 = sqrtPriceTargetX96;
         else
-            sqrtPriceNextX96 = Math.getNextSqrtPriceFromInput(
+            sqrtPriceNextX96 = MathAmount.getNextSqrtPriceFromInput(
                 sqrtPriceCurrentX96,
                 liquidity,
                 amountRemainingLessFee,
@@ -71,13 +72,13 @@ library SwapMath {
         if (zeroForOne) {
             amountIn = max
                 ? amountIn
-                : Math.calcAmount0Delta(
+                : MathAmount.calcAmount0Delta(
                     sqrtPriceCurrentX96,
                     sqrtPriceNextX96,
                     liquidity,
                     true
                 );
-            amountOut = Math.calcAmount1Delta(
+            amountOut = MathAmount.calcAmount1Delta(
                 sqrtPriceCurrentX96,
                 sqrtPriceNextX96,
                 liquidity,
@@ -86,13 +87,13 @@ library SwapMath {
         } else {
             amountIn = max
                 ? amountIn
-                : Math.calcAmount1Delta(
+                : MathAmount.calcAmount1Delta(
                     sqrtPriceCurrentX96,
                     sqrtPriceNextX96,
                     liquidity,
                     true
                 );
-            amountOut = Math.calcAmount0Delta(
+            amountOut = MathAmount.calcAmount0Delta(
                 sqrtPriceCurrentX96,
                 sqrtPriceNextX96,
                 liquidity,
@@ -103,7 +104,7 @@ library SwapMath {
         if (!max) {
             feeAmount = amountRemaining - amountIn;
         } else {
-            feeAmount = Math.mulDivRoundingUp(amountIn, fee, 1e6 - fee);
+            feeAmount = MathAmount.mulDivRoundingUp(amountIn, fee, 1e6 - fee);
         }
     }
 }

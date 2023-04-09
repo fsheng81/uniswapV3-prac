@@ -2,14 +2,14 @@
 pragma solidity ^0.8.0;
 
 import "forge-std/Test.sol";
-import "../../src/lib/Math.sol";
+import "../../src/lib/MathAmount.sol";
 import "../../src/lib/TickMath.sol";
 
-// 测试 Math.sol 和 TickMath.sol
+// 测试 MathAmount.sol 和 TickMath.sol
 // 
 contract MathTest is Test {
     function testCalcAmount0Delta() public {
-        int256 amount0 = Math.calcAmount0Delta(
+        int256 amount0 = MathAmount.calcAmount0Delta(
             TickMath.getSqrtRatioAtTick(85176),
             TickMath.getSqrtRatioAtTick(86129),
             int128(1517882343751509868544)
@@ -20,7 +20,7 @@ contract MathTest is Test {
     }
 
     function testCalcAmount1Delta() public {
-        int256 amount1 = Math.calcAmount1Delta(
+        int256 amount1 = MathAmount.calcAmount1Delta(
             TickMath.getSqrtRatioAtTick(84222),
             TickMath.getSqrtRatioAtTick(85176),
             int128(1517882343751509868544)
@@ -31,7 +31,7 @@ contract MathTest is Test {
     }
 
     function testCalcAmount0DeltaNegative() public {
-        int256 amount0 = Math.calcAmount0Delta(
+        int256 amount0 = MathAmount.calcAmount0Delta(
             TickMath.getSqrtRatioAtTick(85176),
             TickMath.getSqrtRatioAtTick(86129),
             int128(-1517882343751509868544)
@@ -41,7 +41,7 @@ contract MathTest is Test {
     }
 
     function testCalcAmount1DeltaNegative() public {
-        int256 amount1 = Math.calcAmount1Delta(
+        int256 amount1 = MathAmount.calcAmount1Delta(
             TickMath.getSqrtRatioAtTick(84222),
             TickMath.getSqrtRatioAtTick(85176),
             int128(-1517882343751509868544)
