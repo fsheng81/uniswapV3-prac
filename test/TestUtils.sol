@@ -15,6 +15,12 @@ import "./ERC20Mintable.sol";
 // 包括 struct ExpectedStateAfterMint{} 检查各个状态
 
 abstract contract TestUtils is Test {
+    mapping(uint24 => uint24) internal tickSpacings;
+
+    constructor() {
+        tickSpacings[500] = 10;
+        tickSpacings[3000] = 60;
+
     struct ExpectedStateAfterMint {
         UniswapV3Pool pool;
         ERC20Mintable token0;
@@ -277,7 +283,7 @@ abstract contract TestUtils is Test {
         params = IUniswapV3Manager.MintParams({
             tokenA: tokenA,
             tokenB: tokenB,
-            tickSpacing: 60,
+            fee: 3000,
             lowerTick: tick60(lowerPrice),
             upperTick: tick60(upperPrice),
             amount0Desired: amount0,
@@ -294,14 +300,14 @@ abstract contract TestUtils is Test {
         uint160 upperSqrtP,
         uint256 amount0,
         uint256 amount1,
-        uint24 tickSpacing
-    ) internal pure returns (IUniswapV3Manager.MintParams memory params) {
+        uint24 fee
+    ) internal view returns (IUniswapV3Manager.MintParams memory params) {
         params = IUniswapV3Manager.MintParams({
             tokenA: tokenA,
             tokenB: tokenB,
-            tickSpacing: tickSpacing,
-            lowerTick: sqrtPToNearestTick(lowerSqrtP, tickSpacing),
-            upperTick: sqrtPToNearestTick(upperSqrtP, tickSpacing),
+            fee: fee,
+            lowerTick: sqrtPToNearestTick(lowerSqrtP, tickSpacings[fee]),
+            upperTick: sqrtPToNearestTick(upperSqrtP, tickSpacings[fee]),
             amount0Desired: amount0,
             amount1Desired: amount1,
             amount0Min: 0,
@@ -313,10 +319,10 @@ abstract contract TestUtils is Test {
         UniswapV3Factory factory,
         address token0,
         address token1,
-        uint24 tickSpacing,
+        uint24 fee,
         uint256 currentPrice
     ) internal returns (UniswapV3Pool pool) {
-        pool = UniswapV3Pool(factory.createPool(token0, token1, tickSpacing));
+        pool = UniswapV3Pool(factory.createPool(token0, token1, fee));
         pool.initialize(sqrtP(currentPrice));
     }
 }
