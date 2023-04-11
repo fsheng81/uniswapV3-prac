@@ -5,12 +5,24 @@ import "forge-std/Test.sol";
 
 import "../src/UniswapV3Pool.sol";
 import "../src/UniswapV3NFTManager.sol";
-
 import "./ERC20Mintable.sol";
+
+/**
+目的：不同的assert函数来校验具体的每一个变量
+
+struct expectedPoolState
+function assertPoolState()
+
+struct ExpectedBalances
+function assertBalances()
+ 
+struct ExpectedTick
+
+ */
 
 abstract contract Assertions is Test {
     struct ExpectedPoolState {
-        UniswapV3Pool pool;
+        UniswapV3Pool pool; // memory size is ?
         uint128 liquidity;
         uint160 sqrtPriceX96;
         int24 tick;
@@ -110,6 +122,8 @@ abstract contract Assertions is Test {
             expected.liquidityNet,
             "incorrect tick net liquidity"
         );
+
+        // 对比了 expectedMap?
 
         // TODO: fix, must be the same as 'initialized'
         // assertEq(

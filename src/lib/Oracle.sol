@@ -1,6 +1,20 @@
 // SPDX-License-Identifier: BUSL-1.1
 pragma solidity ^0.8.0;
 
+// 预言机的功能：
+/**
+    能够提供一个对外的接口，实时通知最新价格
+    通过一个65535长度的数组记录，记录其有效长度。
+    只有支付相应费用才能够将数组有效长度增加（内存等消耗）
+
+    initialize();
+    write() 更新一个新的时间点上的价格
+    grow()  对现有的数组有效长度进行扩容。
+    transform() 更新一个Observe
+    lte()
+
+
+ */
 library Oracle {
     struct Observation {
         uint32 timestamp;

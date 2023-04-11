@@ -4,7 +4,7 @@ dev2：仅包括最基础的实现，单用户的mint()，不跨tick的swap()，
 
 dev3：增加了工厂类、solidity的数学计算、多个池子计算、跨tick交易。不涉及交易费用、预言机等。
 
-dev4：增加交易费用、预言机
+dev4：增加交易费用、预言机。没有考虑tickSpacing计算过程中跨word。
 
 结构为：
 
@@ -253,6 +253,7 @@ GENERATE_SOURCEMAP = false
 
 `Unknown5` is above the EIP-170 contract size limit (25912 > 24576).
 ```
+这个在dev4版本出现问题：
 
 
 
