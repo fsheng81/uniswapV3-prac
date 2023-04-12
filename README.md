@@ -254,7 +254,8 @@ GENERATE_SOURCEMAP = false
 `Unknown5` is above the EIP-170 contract size limit (25912 > 24576).
 ```
 这个在dev4版本出现问题：
-
+最直接方法：修改本地 anvil 的限制
+anvil --code-size-limit 30000
 
 
 ## 测试/精度

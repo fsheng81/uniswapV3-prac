@@ -9,6 +9,7 @@ import "./ERC20Mintable.sol";
 
 /**
 目的：不同的assert函数来校验具体的每一个变量
+资产设定为 this
 
 struct expectedPoolState
 function assertPoolState()

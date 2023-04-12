@@ -1,0 +1,953 @@
+No files changed, compilation skipped
+
+Running 16 tests for test/UniswapV3Pool.t.sol:UniswapV3PoolTest
+[32m[PASS][0m testBurn() (gas: 4079499)
+Traces:
+  [4079499] [32mUniswapV3PoolTest[0m::[32mtestBurn[0m() [33m[0m
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [207838] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 1546311247949719370887, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [39541] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(987078348444137445, 5000000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [23628] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 987078348444137445) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 987078348444137445)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [18903] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 5000000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 5000000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987078348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 987078348444137445, amount1: 5000000000000000000000)
+    │   └─ [32m← [0m987078348444137445, 5000000000000000000000
+    ├─ [33108] [32mUniswapV3Pool[0m::[32mburn[0m(84240, 86100, 1546311247949719370887) [33m[0m
+    │   ├─ emit [36mBurn[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 987078348444137444, amount1: 4999999999999999999999)
+    │   └─ [32m← [0m987078348444137444, 4999999999999999999999
+    ├─ [677] [32mUniswapV3Pool[0m::[32mslot0[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m5602277097478613991869082763264, 85176, 0, 1, 1
+    ├─ [383] [32mUniswapV3Pool[0m::[32mliquidity[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [383] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal0X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [340] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal1X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m12921651555862555
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m987078348444137445
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m5000000000000000000000
+    ├─ [1061] [32mUniswapV3Pool[0m::[32mpositions[0m(0xa56dd5def4b70e69f9649c3d571eb1d0aae10be80a4b36e44f7a7aea8e731267) [33m[staticcall][0m
+    │   └─ [32m← [0m0, 0, 0, 987078348444137444, 4999999999999999999999
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(84240) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 0, 0, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(86100) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 0, 0, 0, 0
+    ├─ [611] [32mUniswapV3Pool[0m::[32mobservations[0m(0) [33m[staticcall][0m
+    │   └─ [32m← [0m1, 0, true
+    └─ [32m← [0m()
+
+[32m[PASS][0m testBurnPartially() (gas: 4178937)
+Traces:
+  [4178937] [32mUniswapV3PoolTest[0m::[32mtestBurnPartially[0m() [33m[0m
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [207838] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 1546311247949719370887, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [39541] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(987078348444137445, 5000000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [23628] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 987078348444137445) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 987078348444137445)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [18903] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 5000000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 5000000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987078348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 987078348444137445, amount1: 5000000000000000000000)
+    │   └─ [32m← [0m987078348444137445, 5000000000000000000000
+    ├─ [39765] [32mUniswapV3Pool[0m::[32mburn[0m(84240, 86100, 773155623974859685443) [33m[0m
+    │   ├─ emit [36mBurn[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 773155623974859685443, amount0: 493539174222068722, amount1: 2499999999999999999997)
+    │   └─ [32m← [0m493539174222068722, 2499999999999999999997
+    ├─ [677] [32mUniswapV3Pool[0m::[32mslot0[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m5602277097478613991869082763264, 85176, 0, 1, 1
+    ├─ [383] [32mUniswapV3Pool[0m::[32mliquidity[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m773155623974859685444
+    ├─ [383] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal0X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [340] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal1X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m12921651555862555
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m987078348444137445
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m5000000000000000000000
+    ├─ [1061] [32mUniswapV3Pool[0m::[32mpositions[0m(0xa56dd5def4b70e69f9649c3d571eb1d0aae10be80a4b36e44f7a7aea8e731267) [33m[staticcall][0m
+    │   └─ [32m← [0m773155623974859685444, 0, 0, 493539174222068722, 2499999999999999999997
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(84240) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 773155623974859685444, 773155623974859685444, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(86100) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 773155623974859685444, -773155623974859685444, 0, 0
+    ├─ [611] [32mUniswapV3Pool[0m::[32mobservations[0m(0) [33m[staticcall][0m
+    │   └─ [32m← [0m1, 0, true
+    └─ [32m← [0m()
+
+[32m[PASS][0m testCollect() (gas: 4150630)
+Traces:
+  [4150630] [32mUniswapV3PoolTest[0m::[32mtestCollect[0m() [33m[0m
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [207838] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 1546311247949719370887, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [39541] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(987078348444137445, 5000000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [23628] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 987078348444137445) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 987078348444137445)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [18903] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 5000000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 5000000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987078348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 987078348444137445, amount1: 5000000000000000000000)
+    │   └─ [32m← [0m987078348444137445, 5000000000000000000000
+    ├─ [22696] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 42000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 42000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [22423] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 42000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 42000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [38710] [32mUniswapV3Pool[0m::[32mswap[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], false, 42000000000000000000, 5604517560314620920028628779008, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2952] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 8371593947078467) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 8371593947078467)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ [4232] [32mUniswapV3PoolTest[0m::[32muniswapV3SwapCallback[0m(-8371593947078467, 42000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [2983] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 42000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 42000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5042000000000000000000
+    │   ├─ emit [36mSwap[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], recipient: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0: -8371593947078467, amount1: 42000000000000000000, sqrtPriceX96: 5604422590555458105735383351329, liquidity: 1546311247949719370887, tick: 85183)
+    │   └─ [32m← [0m-8371593947078467, 42000000000000000000
+    ├─ [49992] [32mUniswapV3Pool[0m::[32mburn[0m(84240, 86100, 1546311247949719370887) [33m[0m
+    │   ├─ emit [36mBurn[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 978706754497058977, amount1: 5041873999999999999999)
+    │   └─ [32m← [0m978706754497058977, 5041873999999999999999
+    ├─ [1061] [32mUniswapV3Pool[0m::[32mpositions[0m(0xa56dd5def4b70e69f9649c3d571eb1d0aae10be80a4b36e44f7a7aea8e731267) [33m[staticcall][0m
+    │   └─ [32m← [0m0, 0, 27727650748765949686643356806934465, 978706754497058977, 5041999999999999999998
+    ├─ [25915] [32mUniswapV3Pool[0m::[32mcollect[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 978706754497058977, 5041999999999999999998) [33m[0m
+    │   ├─ [2952] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 978706754497058977) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 978706754497058977)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ [22852] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5041999999999999999998) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5041999999999999999998)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ emit [36mCollect[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], recipient: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount0: 978706754497058977, amount1: 5041999999999999999998)
+    │   └─ [32m← [0m978706754497058977, 5041999999999999999998
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m1
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m2
+    ├─ [1061] [32mUniswapV3Pool[0m::[32mpositions[0m(0xa56dd5def4b70e69f9649c3d571eb1d0aae10be80a4b36e44f7a7aea8e731267) [33m[staticcall][0m
+    │   └─ [32m← [0m0, 0, 27727650748765949686643356806934465, 0, 0
+    └─ [32m← [0m()
+
+[32m[PASS][0m testCollectAfterZeroBurn() (gas: 4241214)
+Traces:
+  [4241214] [32mUniswapV3PoolTest[0m::[32mtestCollectAfterZeroBurn[0m() [33m[0m
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [207838] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 1546311247949719370887, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [39541] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(987078348444137445, 5000000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [23628] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 987078348444137445) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 987078348444137445)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [18903] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 5000000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 5000000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987078348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 987078348444137445, amount1: 5000000000000000000000)
+    │   └─ [32m← [0m987078348444137445, 5000000000000000000000
+    ├─ [22696] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 42000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 42000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [22423] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 42000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 42000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [38710] [32mUniswapV3Pool[0m::[32mswap[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], false, 42000000000000000000, 5604517560314620920028628779008, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2952] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 8371593947078467) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 8371593947078467)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ [4232] [32mUniswapV3PoolTest[0m::[32muniswapV3SwapCallback[0m(-8371593947078467, 42000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [2983] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 42000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 42000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5042000000000000000000
+    │   ├─ emit [36mSwap[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], recipient: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0: -8371593947078467, amount1: 42000000000000000000, sqrtPriceX96: 5604422590555458105735383351329, liquidity: 1546311247949719370887, tick: 85183)
+    │   └─ [32m← [0m-8371593947078467, 42000000000000000000
+    ├─ [59496] [32mUniswapV3Pool[0m::[32mburn[0m(84240, 86100, 0) [33m[0m
+    │   ├─ emit [36mBurn[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 0, amount0: 0, amount1: 0)
+    │   └─ [32m← [0m0, 0
+    ├─ [1061] [32mUniswapV3Pool[0m::[32mpositions[0m(0xa56dd5def4b70e69f9649c3d571eb1d0aae10be80a4b36e44f7a7aea8e731267) [33m[staticcall][0m
+    │   └─ [32m← [0m1546311247949719370887, 0, 27727650748765949686643356806934465, 0, 125999999999999999
+    ├─ [22764] [32mUniswapV3Pool[0m::[32mcollect[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 0, 125999999999999999) [33m[0m
+    │   ├─ [22852] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 125999999999999999) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 125999999999999999)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ emit [36mCollect[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], recipient: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount0: 0, amount1: 125999999999999999)
+    │   └─ [32m← [0m0, 125999999999999999
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m978706754497058978
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m5041874000000000000001
+    └─ [32m← [0m()
+
+[32m[PASS][0m testCollectMoreThanAvailable() (gas: 4145353)
+Traces:
+  [4145353] [32mUniswapV3PoolTest[0m::[32mtestCollectMoreThanAvailable[0m() [33m[0m
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [207838] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 1546311247949719370887, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [39541] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(987078348444137445, 5000000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [23628] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 987078348444137445) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 987078348444137445)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [18903] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 5000000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 5000000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987078348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 987078348444137445, amount1: 5000000000000000000000)
+    │   └─ [32m← [0m987078348444137445, 5000000000000000000000
+    ├─ [22696] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 42000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 42000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [22423] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 42000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 42000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [38710] [32mUniswapV3Pool[0m::[32mswap[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], false, 42000000000000000000, 5604517560314620920028628779008, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2952] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 8371593947078467) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 8371593947078467)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ [4232] [32mUniswapV3PoolTest[0m::[32muniswapV3SwapCallback[0m(-8371593947078467, 42000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [2983] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 42000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 42000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5042000000000000000000
+    │   ├─ emit [36mSwap[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], recipient: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0: -8371593947078467, amount1: 42000000000000000000, sqrtPriceX96: 5604422590555458105735383351329, liquidity: 1546311247949719370887, tick: 85183)
+    │   └─ [32m← [0m-8371593947078467, 42000000000000000000
+    ├─ [49992] [32mUniswapV3Pool[0m::[32mburn[0m(84240, 86100, 1546311247949719370887) [33m[0m
+    │   ├─ emit [36mBurn[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 978706754497058977, amount1: 5041873999999999999999)
+    │   └─ [32m← [0m978706754497058977, 5041873999999999999999
+    ├─ [1061] [32mUniswapV3Pool[0m::[32mpositions[0m(0xa56dd5def4b70e69f9649c3d571eb1d0aae10be80a4b36e44f7a7aea8e731267) [33m[staticcall][0m
+    │   └─ [32m← [0m0, 0, 27727650748765949686643356806934465, 978706754497058977, 5041999999999999999998
+    ├─ [26111] [32mUniswapV3Pool[0m::[32mcollect[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 999999999000000000000000000, 999999999000000000000000000) [33m[0m
+    │   ├─ [2952] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 978706754497058977) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 978706754497058977)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ [22852] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5041999999999999999998) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5041999999999999999998)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ emit [36mCollect[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], recipient: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount0: 978706754497058977, amount1: 5041999999999999999998)
+    │   └─ [32m← [0m978706754497058977, 5041999999999999999998
+    └─ [32m← [0m()
+
+[32m[PASS][0m testCollectPartially() (gas: 4248086)
+Traces:
+  [4248086] [32mUniswapV3PoolTest[0m::[32mtestCollectPartially[0m() [33m[0m
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [207838] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 1546311247949719370887, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [39541] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(987078348444137445, 5000000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [23628] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 987078348444137445) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 987078348444137445)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [18903] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 5000000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 5000000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987078348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 987078348444137445, amount1: 5000000000000000000000)
+    │   └─ [32m← [0m987078348444137445, 5000000000000000000000
+    ├─ [22696] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 42000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 42000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [22423] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 42000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 42000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [38710] [32mUniswapV3Pool[0m::[32mswap[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], false, 42000000000000000000, 5604517560314620920028628779008, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2952] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 8371593947078467) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 8371593947078467)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ [4232] [32mUniswapV3PoolTest[0m::[32muniswapV3SwapCallback[0m(-8371593947078467, 42000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [2983] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 42000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 42000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5042000000000000000000
+    │   ├─ emit [36mSwap[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], recipient: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0: -8371593947078467, amount1: 42000000000000000000, sqrtPriceX96: 5604422590555458105735383351329, liquidity: 1546311247949719370887, tick: 85183)
+    │   └─ [32m← [0m-8371593947078467, 42000000000000000000
+    ├─ [60870] [32mUniswapV3Pool[0m::[32mburn[0m(84240, 86100, 773155623974859685443) [33m[0m
+    │   ├─ emit [36mBurn[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 773155623974859685443, amount0: 489353377248529488, amount1: 2520936999999999999997)
+    │   └─ [32m← [0m489353377248529488, 2520936999999999999997
+    ├─ [1061] [32mUniswapV3Pool[0m::[32mpositions[0m(0xa56dd5def4b70e69f9649c3d571eb1d0aae10be80a4b36e44f7a7aea8e731267) [33m[staticcall][0m
+    │   └─ [32m← [0m773155623974859685444, 0, 27727650748765949686643356806934465, 489353377248529488, 2521062999999999999996
+    ├─ [25915] [32mUniswapV3Pool[0m::[32mcollect[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 489353377248529488, 2521062999999999999996) [33m[0m
+    │   ├─ [2952] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 489353377248529488) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 489353377248529488)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ [22852] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 2521062999999999999996) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 2521062999999999999996)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ emit [36mCollect[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], recipient: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount0: 489353377248529488, amount1: 2521062999999999999996)
+    │   └─ [32m← [0m489353377248529488, 2521062999999999999996
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m489353377248529490
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m2520937000000000000004
+    └─ [32m← [0m()
+
+[32m[PASS][0m testFlash() (gas: 4135030)
+Traces:
+  [4135030] [32mUniswapV3PoolTest[0m::[32mtestFlash[0m() [33m[0m
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [207838] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 1546311247949719370887, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [39541] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(987078348444137445, 5000000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [23628] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 987078348444137445) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 987078348444137445)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [18903] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 5000000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 5000000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987078348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 987078348444137445, amount1: 5000000000000000000000)
+    │   └─ [32m← [0m987078348444137445, 5000000000000000000000
+    ├─ [22696] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 3000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [17880] [32mUniswapV3Pool[0m::[32mflash[0m(100000000000000000, 1000000000000000000000, 0x000000000000000000000000000000000000000000000000016345785d8a000000000000000000000000000000000000000000000000003635c9adc5dea00000) [33m[0m
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987078348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ [2952] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 100000000000000000) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 100000000000000000)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ [2952] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000000) [33m[0m
+    │   │   ├─ emit [36mTransfer[0m(from: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000000)
+    │   │   └─ [32m← [0mtrue
+    │   ├─ [6576] [32mUniswapV3PoolTest[0m::[32muniswapV3FlashCallback[0m(300000000000000, 3000000000000000000, 0x000000000000000000000000000000000000000000000000016345785d8a000000000000000000000000000000000000000000000000003635c9adc5dea00000) [33m[0m
+    │   │   ├─ [2952] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 100300000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 100300000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [2362] [32mERC20Mintable[0m::[32mtransfer[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 1003000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 1003000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987378348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5003000000000000000000
+    │   ├─ emit [36mFlash[0m(recipient: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount0: 100000000000000000, amount1: 1000000000000000000000)
+    │   └─ [32m← [0m()
+    └─ [32m← [0m()
+
+[32m[PASS][0m testInitialize() (gas: 3731577)
+Traces:
+  [3731577] [32mUniswapV3PoolTest[0m::[32mtestInitialize[0m() [33m[0m
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [2677] [32mUniswapV3Pool[0m::[32mslot0[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0, 0, 0, 0, 0
+    ├─ [47325] [32mUniswapV3Pool[0m::[32minitialize[0m(14025175117687921942002399182848) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [677] [32mUniswapV3Pool[0m::[32mslot0[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m14025175117687921942002399182848, 103530, 0, 1, 1
+    ├─ [0] [34mVM[0m::[34mexpectRevert[0m(AlreadyInitialized()) [33m[0m
+    │   └─ [34m← [0m()
+    ├─ [607] [31mUniswapV3Pool[0m::[31minitialize[0m(513457177266264914831922429952) [33m[0m
+    │   └─ [31m← [0m"AlreadyInitialized()"
+    └─ [32m← [0m()
+
+[32m[PASS][0m testMintInRange() (gas: 4139098)
+Traces:
+  [4139098] [32mUniswapV3PoolTest[0m::[32mtestMintInRange[0m() [33m[0m
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [207838] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 1546311247949719370887, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [39541] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(987078348444137445, 5000000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [23628] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 987078348444137445) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 987078348444137445)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [18903] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 5000000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 5000000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987078348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 987078348444137445, amount1: 5000000000000000000000)
+    │   └─ [32m← [0m987078348444137445, 5000000000000000000000
+    ├─ [677] [32mUniswapV3Pool[0m::[32mslot0[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m5602277097478613991869082763264, 85176, 0, 1, 1
+    ├─ [383] [32mUniswapV3Pool[0m::[32mliquidity[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m1546311247949719370887
+    ├─ [383] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal0X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [340] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal1X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m12921651555862555
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m987078348444137445
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m5000000000000000000000
+    ├─ [3061] [32mUniswapV3Pool[0m::[32mpositions[0m(0xa56dd5def4b70e69f9649c3d571eb1d0aae10be80a4b36e44f7a7aea8e731267) [33m[staticcall][0m
+    │   └─ [32m← [0m1546311247949719370887, 0, 0, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(84240) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 1546311247949719370887, 1546311247949719370887, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(86100) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 1546311247949719370887, -1546311247949719370887, 0, 0
+    ├─ [611] [32mUniswapV3Pool[0m::[32mobservations[0m(0) [33m[staticcall][0m
+    │   └─ [32m← [0m1, 0, true
+    └─ [32m← [0m()
+
+[32m[PASS][0m testMintInsufficientTokenBalance() (gas: 3967413)
+Traces:
+  [3967413] [32mUniswapV3PoolTest[0m::[32mtestMintInsufficientTokenBalance[0m() [33m[0m
+    ├─ [6796] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 0)
+    │   └─ [32m← [0m()
+    ├─ [6796] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 0)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [0] [34mVM[0m::[34mexpectRevert[0m(InsufficientInputAmount()) [33m[0m
+    │   └─ [34m← [0m()
+    ├─ [194693] [31mUniswapV3Pool[0m::[31mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 1546311247949719370887, 0x) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [740] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(987078348444137445, 5000000000000000000000, 0x) [33m[0m
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   └─ [31m← [0m"InsufficientInputAmount()"
+    └─ [32m← [0m()
+
+[32m[PASS][0m testMintInvalidTickRangeLower() (gas: 3725716)
+Traces:
+  [3725716] [32mUniswapV3PoolTest[0m::[32mtestMintInvalidTickRangeLower[0m() [33m[0m
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [48424] [32mUniswapV3Pool[0m::[32minitialize[0m(79228162514264337593543950336) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [0] [34mVM[0m::[34mexpectRevert[0m(InvalidTickRange()) [33m[0m
+    │   └─ [34m← [0m()
+    ├─ [994] [31mUniswapV3Pool[0m::[31mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], -887273, 0, 0, 0x) [33m[0m
+    │   └─ [31m← [0m"InvalidTickRange()"
+    └─ [32m← [0m()
+
+[32m[PASS][0m testMintInvalidTickRangeUpper() (gas: 3725821)
+Traces:
+  [3725821] [32mUniswapV3PoolTest[0m::[32mtestMintInvalidTickRangeUpper[0m() [33m[0m
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [48424] [32mUniswapV3Pool[0m::[32minitialize[0m(79228162514264337593543950336) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [0] [34mVM[0m::[34mexpectRevert[0m(InvalidTickRange()) [33m[0m
+    │   └─ [34m← [0m()
+    ├─ [1104] [31mUniswapV3Pool[0m::[31mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0, 887273, 0, 0x) [33m[0m
+    │   └─ [31m← [0m"InvalidTickRange()"
+    └─ [32m← [0m()
+
+[32m[PASS][0m testMintOverlappingRanges() (gas: 4376152)
+Traces:
+  [4376152] [32mUniswapV3PoolTest[0m::[32mtestMintOverlappingRanges[0m() [33m[0m
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 3000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 15000000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 15000000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 3000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 3000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 15000000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 15000000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [247638] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 84240, 86100, 1546311247949719370887, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [49426] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(987078348444137445, 5000000000000000000000, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [23628] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 987078348444137445) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 987078348444137445)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [23628] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 5000000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 5000000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987078348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 84240, tickUpper: 86100, amount: 1546311247949719370887, amount0: 987078348444137445, amount1: 5000000000000000000000)
+    │   └─ [32m← [0m987078348444137445, 5000000000000000000000
+    ├─ [156773] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 82920, 87420, 530292834377458670678, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m987078348444137445
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m5000000000000000000000
+    │   ├─ [9626] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(795851655008540255, 3999999999999999999997, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [3728] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 795851655008540255) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 795851655008540255)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [3728] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 3999999999999999999997) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 3999999999999999999997)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m1782930003452677700
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m8999999999999999999997
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 82920, tickUpper: 87420, amount: 530292834377458670678, amount0: 795851655008540255, amount1: 3999999999999999999997)
+    │   └─ [32m← [0m795851655008540255, 3999999999999999999997
+    ├─ [677] [32mUniswapV3Pool[0m::[32mslot0[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m5602277097478613991869082763264, 85176, 0, 1, 1
+    ├─ [383] [32mUniswapV3Pool[0m::[32mliquidity[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m2076604082327178041565
+    ├─ [383] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal0X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [340] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal1X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m1217069996547322300
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m6000000000000000000003
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m1782930003452677700
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m8999999999999999999997
+    ├─ [3061] [32mUniswapV3Pool[0m::[32mpositions[0m(0xa56dd5def4b70e69f9649c3d571eb1d0aae10be80a4b36e44f7a7aea8e731267) [33m[staticcall][0m
+    │   └─ [32m← [0m1546311247949719370887, 0, 0, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(84240) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 1546311247949719370887, 1546311247949719370887, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(86100) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 1546311247949719370887, -1546311247949719370887, 0, 0
+    ├─ [3061] [32mUniswapV3Pool[0m::[32mpositions[0m(0x078cbeedd2979ea5aa057e41d97e04826b40cd20d962613de1a179aa0e641b0a) [33m[staticcall][0m
+    │   └─ [32m← [0m530292834377458670678, 0, 0, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(82920) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 530292834377458670678, 530292834377458670678, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(87420) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 530292834377458670678, -530292834377458670678, 0, 0
+    ├─ [611] [32mUniswapV3Pool[0m::[32mobservations[0m(0) [33m[staticcall][0m
+    │   └─ [32m← [0m1, 0, true
+    └─ [32m← [0m()
+
+[32m[PASS][0m testMintRangeAbove() (gas: 4100053)
+Traces:
+  [4100053] [32mUniswapV3PoolTest[0m::[32mtestMintRangeAbove[0m() [33m[0m
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [162878] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 85200, 87420, 673875950313623875342, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [25221] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(1000000000000000000, 0, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [18903] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 1000000000000000000) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 1000000000000000000)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [5728] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 0) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 0)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m1000000000000000000
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 85200, tickUpper: 87420, amount: 673875950313623875342, amount0: 1000000000000000000, amount1: 0)
+    │   └─ [32m← [0m1000000000000000000, 0
+    ├─ [677] [32mUniswapV3Pool[0m::[32mslot0[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m5602277097478613991869082763264, 85176, 0, 1, 1
+    ├─ [2383] [32mUniswapV3Pool[0m::[32mliquidity[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [383] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal0X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [340] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal1X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m5000000000000000000000
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m1000000000000000000
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [3061] [32mUniswapV3Pool[0m::[32mpositions[0m(0x95a180a39b16cd36acaee5bedc957f9e829e573b2f9291b2204b7dd12c0f9f36) [33m[staticcall][0m
+    │   └─ [32m← [0m673875950313623875342, 0, 0, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(85200) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 673875950313623875342, 673875950313623875342, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(87420) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 673875950313623875342, -673875950313623875342, 0, 0
+    ├─ [611] [32mUniswapV3Pool[0m::[32mobservations[0m(0) [33m[staticcall][0m
+    │   └─ [32m← [0m1, 0, true
+    └─ [32m← [0m()
+
+[32m[PASS][0m testMintRangeBelow() (gas: 4134823)
+Traces:
+  [4134823] [32mUniswapV3PoolTest[0m::[32mtestMintRangeBelow[0m() [33m[0m
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [46596] [32mERC20Mintable[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mTransfer[0m(from: 0x0000000000000000000000000000000000000000, to: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0m()
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [49342] [32mUniswapV3Pool[0m::[32minitialize[0m(5602277097478613991869082763264) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 1000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 1000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [24523] [32mERC20Mintable[0m::[32mapprove[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 5000000000000000000000) [33m[0m
+    │   ├─ emit [36mApproval[0m(owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], spender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], amount: 5000000000000000000000)
+    │   └─ [32m← [0mtrue
+    ├─ [202956] [32mUniswapV3Pool[0m::[32mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 82920, 85140, 674293217439940683703, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   ├─ [2564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m0
+    │   ├─ [31526] [32mUniswapV3PoolTest[0m::[32muniswapV3MintCallback[0m(0, 4999999999999999999994, 0x0000000000000000000000002e234dae75c793f67a35089c9d99245e1c58470b0000000000000000000000005615deb798bb3e4dfa0139dfa1b3d433cc23b72f0000000000000000000000007fa9385be102ac3eac297483dd6233d62b3e1496) [33m[0m
+    │   │   ├─ [5728] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 0) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 0)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   ├─ [23628] [32mERC20Mintable[0m::[32mtransferFrom[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], 4999999999999999999994) [33m[0m
+    │   │   │   ├─ emit [36mTransfer[0m(from: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], to: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830], amount: 4999999999999999999994)
+    │   │   │   └─ [32m← [0mtrue
+    │   │   └─ [32m← [0m()
+    │   ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[0m
+    │   │   └─ [32m← [0m4999999999999999999994
+    │   ├─ emit [36mMint[0m(sender: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], owner: UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], tickLower: 82920, tickUpper: 85140, amount: 674293217439940683703, amount0: 0, amount1: 4999999999999999999994)
+    │   └─ [32m← [0m0, 4999999999999999999994
+    ├─ [677] [32mUniswapV3Pool[0m::[32mslot0[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m5602277097478613991869082763264, 85176, 0, 1, 1
+    ├─ [2383] [32mUniswapV3Pool[0m::[32mliquidity[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [383] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal0X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [340] [32mUniswapV3Pool[0m::[32mfeeGrowthGlobal1X128[0m() [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m1000000000000000000
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496]) [33m[staticcall][0m
+    │   └─ [32m← [0m6
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m0
+    ├─ [564] [32mERC20Mintable[0m::[32mbalanceOf[0m(UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]) [33m[staticcall][0m
+    │   └─ [32m← [0m4999999999999999999994
+    ├─ [3061] [32mUniswapV3Pool[0m::[32mpositions[0m(0xca9b34557cf53245ab3ec63baabe6ba149d38459f59d4ee34a29b6a2e492433b) [33m[staticcall][0m
+    │   └─ [32m← [0m674293217439940683703, 0, 0, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(82920) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 674293217439940683703, 674293217439940683703, 0, 0
+    ├─ [1157] [32mUniswapV3Pool[0m::[32mticks[0m(85140) [33m[staticcall][0m
+    │   └─ [32m← [0mtrue, 674293217439940683703, -674293217439940683703, 0, 0
+    ├─ [611] [32mUniswapV3Pool[0m::[32mobservations[0m(0) [33m[staticcall][0m
+    │   └─ [32m← [0m1, 0, true
+    └─ [32m← [0m()
+
+[32m[PASS][0m testMintZeroLiquidity() (gas: 3725929)
+Traces:
+  [3725929] [32mUniswapV3PoolTest[0m::[32mtestMintZeroLiquidity[0m() [33m[0m
+    ├─ [3655940] [32mUniswapV3Factory[0m::[32mcreatePool[0m(ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 3000) [33m[0m
+    │   ├─ [3557973] [33m→ [0m[33mnew[0m UniswapV3Pool@0xDB8A849096b8E257590870A5a55E8770f9015830
+    │   │   ├─ [736] [32mUniswapV3Factory[0m::[32mparameters[0m() [33m[0m
+    │   │   │   └─ [32m← [0mUniswapV3Factory: [0xF62849F9A0B5Bf2913b396098F7c7019b51A820a], ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], 60, 3000
+    │   │   └─ [32m← [0m17760 bytes of code
+    │   ├─ emit [36mPoolCreated[0m(token0: ERC20Mintable: [0x2e234DAe75C793f67A35089C9d99245E1C58470b], token1: ERC20Mintable: [0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f], fee: 3000, pool: UniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830])
+    │   └─ [32m← [0mUniswapV3Pool: [0xDB8A849096b8E257590870A5a55E8770f9015830]
+    ├─ [48424] [32mUniswapV3Pool[0m::[32minitialize[0m(79228162514264337593543950336) [33m[0m
+    │   └─ [32m← [0m()
+    ├─ [0] [34mVM[0m::[34mexpectRevert[0m(ZeroLiquidity()) [33m[0m
+    │   └─ [34m← [0m()
+    ├─ [1145] [31mUniswapV3Pool[0m::[31mmint[0m(UniswapV3PoolTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 0, 1, 0, 0x) [33m[0m
+    │   └─ [31m← [0m"ZeroLiquidity()"
+    └─ [32m← [0m()
+
+Test result: [32mok[0m. 16 passed; 0 failed; finished in 7.26ms
