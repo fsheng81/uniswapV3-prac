@@ -35,6 +35,8 @@ library TickBitmap {
         int24 tickSpacing,
         bool lte
     ) internal view returns (int24 next, bool initialized) {
+
+        // "/" 除法在负数的情况下，需要--。 -10 / 3 = 
         int24 compressed = tick / tickSpacing;
         if (tick < 0 && tick % tickSpacing != 0) compressed--;
 

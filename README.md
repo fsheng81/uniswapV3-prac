@@ -290,15 +290,16 @@ def tick_to_price(tick):
 
 ### 流动性测试用例
 
-流动性的测试用例包括 manager.t.sol、pool.t.sol，两个文件中使用的用例数值上相同：
+流动性的测试用例包括 manager.t.sol、pool.t.sol，涉及到以下场景：
 
-```solidity
-// 
-```
-
+1. WETH/USDC交易对，现价5000，注入区间为[4545, 5500]，期望注入的数目为（1， 5000）。tickSpacing等于60。计算最终的流动性大小和两种交易对的具体数目。
+2. 
 
 
-### python实现
+
+
+
+#### python实现
 
 ```python
 def mint(amount0, amount1, price_low, price_cur, price_upp):
@@ -333,9 +334,9 @@ def mint(amount0, amount1, price_low, price_cur, price_upp):
 
 对比`testMintOverlappingRanges()`，可以基本认为 `mint()`时，其他position不产生影响。
 
-### 交易
+### 交易测试
 
-#### 单区间交易
+#### 单区间交
 
 ```
 
@@ -348,11 +349,17 @@ def mint(amount0, amount1, price_low, price_cur, price_upp):
 
 ### 交易费
 
+交易费的计算过程主要是tick、position这两个概念。
+
+当cur_price跨过当前tick的时候，会更新tick里面的值，同时判断是否需要
+
+想要取出交易费：需要burn()对应的流动性，再调用collect()收取相应的token数量。
 
 
 
-
-
+1. 创造position的时候
+2. 发生交易的时候
+3. 统计collect()的时候
 
 
 

@@ -97,6 +97,7 @@ library Tick {
         Tick.Info storage lowerTick = self[lowerTick_];
         Tick.Info storage upperTick = self[upperTick_];
 
+        // 完全没有必要这么复杂......
         uint256 feeGrowthBelow0X128;
         uint256 feeGrowthBelow1X128;
         if (currentTick >= lowerTick_) {
@@ -125,6 +126,7 @@ library Tick {
                 upperTick.feeGrowthOutside1X128;
         }
 
+        // 记录中很多是0值。
         feeGrowthInside0X128 =
             feeGrowthGlobal0X128 -
             feeGrowthBelow0X128 -
