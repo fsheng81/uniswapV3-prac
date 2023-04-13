@@ -4,10 +4,6 @@
 
 
 
-forge test -vvv --match-path test/UniswapV3Pool.t.sol --match-contract UniswapV3PoolTest --match-test "testMintInRange"
-
-forge test -vvvv --match-path test/UniswapV3Pool.t.sol --match-contract UniswapV3PoolTest > testlog/testPool
-
 
 
 ## mint()
@@ -272,6 +268,16 @@ burn amount：[liquidity / 2]
 #### case4
 
 #### case flash
+
+## 日志分析
+
+使用指令生成test时候的日志，说明调用过程：
+
+```
+forge test -vvvv --match-path test/UniswapV3Pool.t.sol --match-contract UniswapV3PoolTest --match-test "testMintInRange"
+
+forge test -vvvv --match-path test/UniswapV3Pool.t.sol --match-contract UniswapV3PoolTest > testlog/testPool
+```
 
 
 
