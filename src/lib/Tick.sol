@@ -36,29 +36,25 @@ library Tick {
         int128 liquidityDelta, /** 正负号代表注入/移除流动性 */
         uint256 feeGrowthGlobal0X128,
         uint256 feeGrowthGlobal1X128,
-        bool upper
+        bool upper /** 是否是position的upperTick */
     ) internal returns (bool flipped) {
         Tick.Info storage tickInfo = self[tick];
 
         uint128 liquidityBefore = tickInfo.liquidityGross;
-        uint128 liquidityAfter = LiquidityMath.addLiquidity(
-            liquidityBefore,
-            liquidityDelta
-        );
+        uint128 liquidityAfter = LiquidityMath.addLiquidity(liquidityBefore, liquidityDelta);
 
-        // 影响 bitMap
+        // 是否 影响 bitMap
         flipped = (liquidityAfter == 0) != (liquidityBefore == 0);
 
         if (liquidityBefore == 0) {
             // by convention, assume that all previous fees were collected below
-            // the tick
             if (tick <= currentTick) {
                 tickInfo.feeGrowthOutside0X128 = feeGrowthGlobal0X128;
                 tickInfo.feeGrowthOutside1X128 = feeGrowthGlobal1X128;
             }
-
             tickInfo.initialized = true;
         }
+        // todo: if liquidityAfter == 0 , initialize = false.
 
         tickInfo.liquidityGross = liquidityAfter;
         tickInfo.liquidityNet = upper

@@ -10,3 +10,21 @@ position.info中记录 insideLast的值，和 区间中包括的 tokenowned。
 
 **mint场景**
 
+1. 第一次激活该tick：
+
+```solidity
+mint() -> _modifyPosition() -> ticks.update()
+
+// ticks.update()
+// 如果此时 tick <= currentTick
+// outside = global.
+// 如果 tick > currentTick 则不变，还是0
+
+// liquidityGross == After.
+// liquidityNet = upper ? net + delta : net - delta
+```
+
+2. 后续增加/减少tick：
+
+**swap场景**
+

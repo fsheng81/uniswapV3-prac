@@ -194,12 +194,10 @@ contract UniswapV3Pool is IUniswapV3Pool {
         uint256 feeGrowthGlobal0X128_ = feeGrowthGlobal0X128;
         uint256 feeGrowthGlobal1X128_ = feeGrowthGlobal1X128;
 
-        position = positions.get(
-            params.owner,
-            params.lowerTick,
-            params.upperTick
-        );
+        // 如果是第一次，则会map创造一个新的
+        position = positions.get(params.owner, params.lowerTick, params.upperTick);
 
+        // 检查当前tick的激活状态是否有变化
         bool flippedLower = ticks.update(
             params.lowerTick,
             slot0_.tick,
@@ -217,13 +215,11 @@ contract UniswapV3Pool is IUniswapV3Pool {
             true
         );
 
-        if (flippedLower) {
+        if (flippedLower)
             tickBitmap.flipTick(params.lowerTick, int24(tickSpacing));
-        }
 
-        if (flippedUpper) {
+        if (flippedUpper)
             tickBitmap.flipTick(params.upperTick, int24(tickSpacing));
-        }
 
         (uint256 feeGrowthInside0X128, uint256 feeGrowthInside1X128) = ticks
             .getFeeGrowthInside(
@@ -240,6 +236,7 @@ contract UniswapV3Pool is IUniswapV3Pool {
             feeGrowthInside1X128
         );
 
+        // 根据cur_price和tick区间的关系，计算所需的amount
         if (slot0_.tick < params.lowerTick) {
             amount0 = MathAmount.calcAmount0Delta(
                 TickMath.getSqrtRatioAtTick(params.lowerTick),
@@ -259,6 +256,7 @@ contract UniswapV3Pool is IUniswapV3Pool {
                 params.liquidityDelta
             );
 
+            // 在区间中，因此当前liqudity会发生改变
             liquidity = LiquidityMath.addLiquidity(
                 liquidity,
                 params.liquidityDelta
@@ -279,14 +277,14 @@ contract UniswapV3Pool is IUniswapV3Pool {
         uint128 amount,
         bytes calldata data
     ) external returns (uint256 amount0, uint256 amount1) {
-        if (
-            lowerTick >= upperTick ||
+        // 1. check 检查入参
+        if (lowerTick >= upperTick ||
             lowerTick < TickMath.MIN_TICK ||
             upperTick > TickMath.MAX_TICK
         ) revert InvalidTickRange();
-
         if (amount == 0) revert ZeroLiquidity();
 
+        // 2. 根据liquidity，计算amount0 amount1
         (, int256 amount0Int, int256 amount1Int) = _modifyPosition(
             ModifyPositionParams({
                 owner: owner,
@@ -296,6 +294,7 @@ contract UniswapV3Pool is IUniswapV3Pool {
             })
         );
 
+        // 3. 执行交付 交互。// todo: 会不会有callback的重入风险
         amount0 = uint256(amount0Int);
         amount1 = uint256(amount1Int);
 
@@ -303,11 +302,7 @@ contract UniswapV3Pool is IUniswapV3Pool {
         uint256 balance1Before;
         if (amount0 > 0) balance0Before = balance0();
         if (amount1 > 0) balance1Before = balance1();
-        IUniswapV3MintCallback(msg.sender).uniswapV3MintCallback(
-            amount0,
-            amount1,
-            data
-        );
+        IUniswapV3MintCallback(msg.sender).uniswapV3MintCallback(amount0, amount1, data);
 
         /** 检查是否已经传入流动性 */
         /** 应该是相等的 */
@@ -317,8 +312,8 @@ contract UniswapV3Pool is IUniswapV3Pool {
             revert InsufficientInputAmount();
 
         emit Mint(
-            msg.sender,
-            owner,
+            msg.sender, // 调用mint()的地址有：manager\pool.t
+            owner,      // 铸造的position归属于地址：
             lowerTick,
             upperTick,
             amount,
