@@ -43,11 +43,11 @@ library Tick {
         uint128 liquidityBefore = tickInfo.liquidityGross;
         uint128 liquidityAfter = LiquidityMath.addLiquidity(liquidityBefore, liquidityDelta);
 
-        // 是否 影响 bitMap
+        // flipped: 是否影响bitMap
         flipped = (liquidityAfter == 0) != (liquidityBefore == 0);
 
         if (liquidityBefore == 0) {
-            // by convention, assume that all previous fees were collected below
+            // 见outside定义，基于cross()的计算方式，来设置
             if (tick <= currentTick) {
                 tickInfo.feeGrowthOutside0X128 = feeGrowthGlobal0X128;
                 tickInfo.feeGrowthOutside1X128 = feeGrowthGlobal1X128;
@@ -56,6 +56,8 @@ library Tick {
         }
         // todo: if liquidityAfter == 0 , initialize = false.
 
+        // 滑过lowTick时，会根据 liquidityNet 增加这个流动性Delta，
+        // 滑过 upTick时，会根据 liquidityNet 减少这个流动性Delta
         tickInfo.liquidityGross = liquidityAfter;
         tickInfo.liquidityNet = upper
             ? int128(int256(tickInfo.liquidityNet) - liquidityDelta)
@@ -69,12 +71,14 @@ library Tick {
         uint256 feeGrowthGlobal1X128
     ) internal returns (int128 liquidityDelta) {
         Tick.Info storage info = self[tick];
-        info.feeGrowthOutside0X128 =
-            feeGrowthGlobal0X128 -
-            info.feeGrowthOutside0X128;
-        info.feeGrowthOutside1X128 =
-            feeGrowthGlobal1X128 -
-            info.feeGrowthOutside1X128;
+
+        // if left -> right cross 
+        // global - 上一次的outside(那上一次一定是 right -> left)
+        // 此时是获得了 距离上一次cross() 这一段时间中的所有增量。
+        info.feeGrowthOutside0X128 = feeGrowthGlobal0X128 - info.feeGrowthOutside0X128;
+        info.feeGrowthOutside1X128 = feeGrowthGlobal1X128 - info.feeGrowthOutside1X128;
+
+        // 返回此时的全局流动性增量
         liquidityDelta = info.liquidityNet;
     }
 
