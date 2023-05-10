@@ -124,9 +124,6 @@ library Tick {
         // inside: position [lowTick, upTick]
         // 
         feeGrowthInside0X128 = feeGrowthGlobal0X128 - feeGrowthBelow0X128 - feeGrowthAbove0X128;
-        feeGrowthInside1X128 =
-            feeGrowthGlobal1X128 -
-            feeGrowthBelow1X128 -
-            feeGrowthAbove1X128;
+        feeGrowthInside1X128 = feeGrowthGlobal1X128 - feeGrowthBelow1X128 - feeGrowthAbove1X128;
     }
 }
